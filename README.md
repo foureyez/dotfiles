@@ -2,6 +2,13 @@
 
 Custom dotfiles configurations managed with [chezmoi](https://github.com/twpayne/chezmoi)
 
+## Setup
+
+```sh
+chezmoi init https://github.com/foureyez/dotfiles.git`
+chezmoi apply -v
+```
+
 ## Zsh
 
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
