@@ -1,6 +1,6 @@
 # dotfiles
 
-Custom dotfiles configurations managed with chezmoi
+Custom dotfiles configurations managed with [chezmoi](https://github.com/twpayne/chezmoi)
 
 ## Zsh
 
