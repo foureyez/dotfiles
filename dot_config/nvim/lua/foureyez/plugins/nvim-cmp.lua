@@ -13,11 +13,23 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		local border = {
+			{ "╭", "CmpBorder" },
+			{ "─", "CmpBorder" },
+			{ "╮", "CmpBorder" },
+			{ "│", "CmpBorder" },
+			{ "╯", "CmpBorder" },
+			{ "─", "CmpBorder" },
+			{ "╰", "CmpBorder" },
+			{ "│", "CmpBorder" },
+		}
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 		lspkind.init({})
 
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		cmp.setup({
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
@@ -42,14 +54,33 @@ return {
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
+				{ name = "diag-codes" },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "nvim_lsp_document_symbol" },
 			}),
 
+			window = {
+				documentation = {
+					border = border,
+				},
+				completion = {
+					border = border,
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+					col_offset = -3,
+					side_padding = 0,
+				},
+			},
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
-				format = lspkind.cmp_format({
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+					kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+					return kind
+				end,
 			},
 		})
 	end,

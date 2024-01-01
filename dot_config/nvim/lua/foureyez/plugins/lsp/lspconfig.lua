@@ -66,12 +66,17 @@ return {
       capabilities = capabilities,
       settings = {
         gopls = {
+          experimentalPostfixCompletions = true,
           analyses = {
             shadow = true,
+            unusedparams = true,
             fillstruct = true,
           },
           staticcheck = true,
         },
+      },
+      init_options = {
+        usePlaceholders = true,
       },
     })
 

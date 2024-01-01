@@ -39,3 +39,5 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+opt.so = 9999 -- keep cursor at the center of the screen
