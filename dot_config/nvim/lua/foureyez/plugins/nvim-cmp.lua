@@ -64,10 +64,10 @@ return {
           border = border,
         },
         completion = {
-          border = border,
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-          col_offset = -3,
-          side_padding = 0,
+          -- border = border,
+          -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          -- col_offset = -3,
+          -- side_padding = 0,
         },
       },
       -- configure lspkind for vs-code like pictograms in completion menu

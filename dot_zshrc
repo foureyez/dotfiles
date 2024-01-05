@@ -61,3 +61,5 @@ source $ZSH/plugins/znap/znap.zsh
 ## Setup zsh-autocomplete
 znap source marlonrichert/zsh-autocomplete
 znap source zdharma-continuum/fast-syntax-highlighting
+
+export GOPRIVATE=bitbucket.corp.zscaler.com/*
