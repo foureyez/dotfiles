@@ -3,7 +3,19 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		{ "folke/neodev.nvim", opts = {} },
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+	},
+	opts = {
+		diagnostics = {
+			underline = true,
+			update_in_insert = false,
+			virtual_text = {
+				spacing = 4,
+				source = "if_many",
+				prefix = "●",
+			},
+		},
 	},
 	config = function()
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -12,8 +24,21 @@ return {
 
 		local opts = { noremap = true, silent = true }
 		local on_attach = function(client, bufnr)
-			opts.buffer = bufnr
+			if client.name == "gopls" then
+				if not client.server_capabilities.semanticTokensProvider then
+					local semantic = client.config.capabilities.textDocument.semanticTokens
+					client.server_capabilities.semanticTokensProvider = {
+						full = true,
+						legend = {
+							tokenTypes = semantic.tokenTypes,
+							tokenModifiers = semantic.tokenModifiers,
+						},
+						range = true,
+					}
+				end
+			end
 
+			opts.buffer = bufnr
 			opts.desc = "Show LSP references"
 			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -74,13 +99,39 @@ return {
 			capabilities = capabilities,
 			settings = {
 				gopls = {
+					gofumpt = true,
+					codelenses = {
+						gc_details = false,
+						generate = true,
+						regenerate_cgo = true,
+						-- run_govulncheck = true,
+						test = true,
+						tidy = true,
+						upgrade_dependency = true,
+						vendor = true,
+					},
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
 					experimentalPostfixCompletions = true,
 					analyses = {
+						fieldalignment = true,
+						nilness = true,
 						shadow = true,
 						unusedparams = true,
+						unusedwrite = true,
+						useany = true,
 						fillstruct = true,
 					},
 					staticcheck = true,
+					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+					semanticTokens = true,
 				},
 			},
 			init_options = {
