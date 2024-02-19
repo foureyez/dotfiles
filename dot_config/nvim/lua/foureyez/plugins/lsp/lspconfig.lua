@@ -58,6 +58,14 @@ return {
 		lspconfig.rust_analyzer.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+						extraArgs = { "--profile", "rust-analyzer" },
+					},
+				},
+			},
 		})
 
 		-- Configure LSP for golang
