@@ -1,0 +1,15 @@
+import = ["/Users/arawat/.config/alacritty/themes/themes/one_dark.toml"]
+
+[env]
+LANG = "en_US.UTF-8"
+TERM = "xterm-256color"
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[window]
+opacity = 1
+startup_mode = "Maximized"

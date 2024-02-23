@@ -42,16 +42,6 @@ else
   export EDITOR='nvim'
 fi
 
-# Setup PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
-export PATH=/usr/local/go/bin:$PATH
-export PATH=$HOME/softwares/nvim/bin:$PATH
-export PATH=$HOME/ssh-keys:$PATH
-
-#Setup Aliases
-alias ls="ls -ltr"
-alias vim=nvim
 
 # Setup znap 
 [[ -r $ZSH/plugins/znap/znap.zsh ]] ||
@@ -63,4 +53,19 @@ source $ZSH/plugins/znap/znap.zsh
 znap source marlonrichert/zsh-autocomplete
 znap source zdharma-continuum/fast-syntax-highlighting
 
+eval "$(zoxide init zsh)"
+
 export GOPRIVATE=bitbucket.corp.zscaler.com/*
+
+# Setup PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/softwares/nvim/bin:$PATH
+export PATH=$HOME/ssh-keys:$PATH
+
+#Setup Aliases
+alias ls="ls -ltr"
+alias vim=nvim
+alias cd=z # Use zoxide instead of cd
+
