@@ -2,12 +2,13 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer",         -- source for text in buffer
-    "hrsh7th/cmp-path",           -- source for file system paths
-    "L3MON4D3/LuaSnip",           -- snippet engine
-    "saadparwaiz1/cmp_luasnip",   -- for autocompletion
-    "rafamadriz/friendly-snippets", -- useful snippets
-    "onsails/lspkind.nvim",       -- vs-code like pictograms
+    "hrsh7th/cmp-buffer",               -- source for text in buffer
+    "hrsh7th/cmp-path",                 -- source for file system paths
+    "L3MON4D3/LuaSnip",                 -- snippet engine
+    "saadparwaiz1/cmp_luasnip",         -- for autocompletion
+    "rafamadriz/friendly-snippets",     -- useful snippets
+    "onsails/lspkind.nvim",             -- vs-code like pictograms
+    "lukas-reineke/cmp-under-comparator", -- comparator for better sorting for completions
   },
   config = function()
     local cmp = require("cmp")
@@ -32,7 +33,7 @@ return {
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,noselect",
       },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
@@ -58,6 +59,18 @@ return {
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lsp_document_symbol" },
       }),
+      sorting = {
+        comparators = {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          require("cmp-under-comparator").under,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
 
       window = {
         documentation = {

@@ -1,4 +1,4 @@
-import = ["/Users/arawat/.config/alacritty/themes/themes/one_dark.toml"]
+import = ["~/.config/alacritty/themes/themes/one_dark.toml"]
 
 [env]
 LANG = "en_US.UTF-8"
@@ -6,10 +6,13 @@ TERM = "xterm-256color"
 
 [font]
 size = 15.0
+offset = { x = 0, y = 5 }
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 
 [window]
-opacity = 1
+dynamic_padding = true
+decorations = "Full"
+opacity = 1.0
 startup_mode = "Maximized"
