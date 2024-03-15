@@ -54,6 +54,7 @@ znap source marlonrichert/zsh-autocomplete
 znap source zdharma-continuum/fast-syntax-highlighting
 
 eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
 
 export GOPRIVATE=bitbucket.corp.zscaler.com/*
 
