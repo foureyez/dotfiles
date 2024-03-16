@@ -18,7 +18,6 @@ return {
       ["<F5>"] = {
         function()
           require("dap").continue()
-          vim.cmd("NvimTreeClose")
         end,
         "Debugger Continue",
       },
