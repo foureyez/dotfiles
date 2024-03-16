@@ -15,10 +15,6 @@ return {
 
     local wk = require("which-key")
     wk.register({
-      ["<leader>db"] = {
-        "<cmd> DapToggleBreakpoint <CR>",
-        "Add breakpoint at line",
-      },
       ["<F5>"] = {
         function()
           require("dap").continue()

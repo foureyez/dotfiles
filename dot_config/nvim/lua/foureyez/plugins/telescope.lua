@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-project.nvim",
+    "nvim-telescope/telescope-dap.nvim",
   },
   config = function()
     local telescope = require("telescope")
@@ -22,6 +23,9 @@ return {
         },
       },
     })
+    require("telescope").load_extension("dap")
+    require("telescope").load_extension("file_browser")
+
     -- Setup Keymaps
     local wk = require("which-key")
     wk.register({
@@ -33,6 +37,12 @@ return {
       ["<leader>p"] = {
         function()
           telescope.extensions.project.project({})
+        end,
+        "Switch Project",
+      },
+      ["<leader>dl"] = {
+        function()
+          telescope.extensions.dap.list_breakpoints({})
         end,
         "Switch Project",
       },
