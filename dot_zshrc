@@ -60,6 +60,7 @@ export GOPRIVATE=bitbucket.corp.zscaler.com/*
 
 # Setup PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/softwares/nvim/bin:$PATH
