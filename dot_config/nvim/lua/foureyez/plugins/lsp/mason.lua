@@ -17,6 +17,7 @@ return {
         "ruff",
         "rust-analyzer",
         "svelte-language-server",
+        "yaml-language-server",
       },
     })
   end,
