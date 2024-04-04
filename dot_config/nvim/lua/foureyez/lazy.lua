@@ -19,11 +19,6 @@ require("lazy").setup({
 	{ import = "foureyez.plugins" },
 	{ import = "foureyez.plugins.lsp" },
 }, {
-	install = {
-		colorscheme = {
-			"onedark",
-		},
-	},
 	checker = {
 		enabled = true,
 		notify = false,
