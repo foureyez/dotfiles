@@ -70,4 +70,6 @@ export PATH=$HOME/ssh-keys:$PATH
 alias ls="ls -ltr"
 alias vim=nvim
 alias cd=z # Use zoxide instead of cd
-
+alias kubectl=k
+alias src="source ~/.zshrc"
+alias tsrc="tmux source ~/.tmux.conf"

@@ -14,6 +14,7 @@ return {
         "delve",
         "pyright",
         "lua-language-server",
+        "bash-language-server",
         "ruff",
         "rust-analyzer",
         "svelte-language-server",

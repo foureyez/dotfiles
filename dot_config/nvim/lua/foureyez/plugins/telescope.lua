@@ -43,7 +43,7 @@ return {
         f = { "<cmd>Telescope find_files<CR>", "Find Files" },
         a = { "<cmd> Telescope live_grep<CR>", "Live Grep" },
       },
-      ["<leader>p"] = {
+      ["<leader>;"] = {
         function()
           telescope.extensions.project.project({})
         end,

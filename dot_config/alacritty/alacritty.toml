@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/one_dark.toml"]
+import = ["~/.config/alacritty/themes/themes/tokyo-night-storm.toml"]
 
 [env]
 LANG = "en_US.UTF-8"
