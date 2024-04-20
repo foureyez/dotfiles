@@ -171,9 +171,37 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Add gaps between i3 windows
+gaps inner 10
+# gaps outer 5
+# smart_gaps on
+
+# Set background image
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+
+# Set window border colors
+client.focused          #2e3c64 #2e3c64 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        i3bar_command /usr/bin/i3bar
         status_command i3status --config ~/.config/i3status/config
+        i3bar_command i3bar --transparency
+        position top
+        colors {
+          background #2e3c64
+          statusline #ffffff
+          separator #666666
+
+          focused_workspace  #7aa2f7 #285577 #ffffff
+          active_workspace   #333333 #5f676a #ffffff
+          inactive_workspace #333333 #222222 #888888
+          urgent_workspace   #2f343a #900000 #ffffff
+          binding_mode       #2f343a #900000 #ffffff
+        }
 }
