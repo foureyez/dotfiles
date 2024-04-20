@@ -50,8 +50,8 @@ fi
 source $ZSH/plugins/znap/znap.zsh 
 
 ## Setup zsh-autocomplete
-znap source marlonrichert/zsh-autocomplete
 znap source zdharma-continuum/fast-syntax-highlighting
+znap source marlonrichert/zsh-autocomplete
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
@@ -65,7 +65,7 @@ export PATH=$HOME/go/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/softwares/nvim/bin:$PATH
 export PATH=$HOME/ssh-keys:$PATH
-export PATH=/opt/nvim/:$PATH
+export PATH=/opt/nvim/bin:$PATH
 
 #Setup Aliases
 alias ls="ls -ltr"
