@@ -179,6 +179,9 @@ gaps inner 10
 # Set background image
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 
+# Set refresh rate
+exec_always --no-startup-id xrandr --output DP-0 --mode 2560x1440 --rate 120
+
 # Set window border colors
 client.focused          #2e3c64 #2e3c64 #ffffff #2e9ef4   #285577
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
