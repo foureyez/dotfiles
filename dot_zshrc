@@ -33,7 +33,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-<<<<<<< Updated upstream
 
 ## Node version manager setup
 export NVM_DIR="$HOME/.config/nvm"
