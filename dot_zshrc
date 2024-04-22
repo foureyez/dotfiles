@@ -33,6 +33,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+<<<<<<< Updated upstream
 
 ## Node version manager setup
 export NVM_DIR="$HOME/.config/nvm"
@@ -79,3 +80,5 @@ alias cd=z # Use zoxide instead of cd
 alias kubectl=k
 alias src="source ~/.zshrc"
 alias tsrc="tmux source ~/.tmux.conf"
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
