@@ -72,6 +72,8 @@ export PATH=$HOME/softwares/nvim/bin:$PATH
 export PATH=$HOME/ssh-keys:$PATH
 export PATH=/opt/nvim/bin:$PATH
 
+export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
+
 #Setup Aliases
 alias ls="ls -ltr"
 alias vim=nvim

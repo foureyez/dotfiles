@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -183,9 +183,10 @@ exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 
 # Set refresh rate
 exec_always --no-startup-id xrandr --output DP-0 --mode 2560x1440 --rate 120
+exec_always --no-startup-id picom --experimental-backends --backend glx 
 
 # Set window border colors
-client.focused          #2e3c64 #2e3c64 #ffffff #2e9ef4   #285577
+client.focused          #2e3c64 #2e3c64 #ffffff #2e9ef4   #7aa2f7
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
