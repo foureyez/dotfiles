@@ -182,7 +182,7 @@ default_border pixel 2
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 
 # Set refresh rate
-exec_always --no-startup-id xrandr --output DP-0 --mode 2560x1440 --rate 120
+exec_always --no-startup-id xrandr --output DP-0 --mode 2560x1440 --rate 144
 exec_always --no-startup-id picom --experimental-backends --backend glx 
 
 # Set window border colors
