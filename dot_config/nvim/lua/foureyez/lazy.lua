@@ -17,7 +17,13 @@ vim.g.loaded_netrwPlugin = 1
 
 require("lazy").setup({
 	{ import = "foureyez.plugins" },
+	{ import = "foureyez.plugins.ui" },
+	{ import = "foureyez.plugins.utils" },
+	{ import = "foureyez.plugins.coding" },
 	{ import = "foureyez.plugins.lsp" },
+	{ import = "foureyez.plugins.notetaking" },
+	{ import = "foureyez.plugins.debugging" },
+	{ import = "foureyez.plugins.git" },
 }, {
 	checker = {
 		enabled = true,
