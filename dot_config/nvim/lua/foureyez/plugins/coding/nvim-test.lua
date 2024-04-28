@@ -1,4 +1,5 @@
 return {
-  "klen/nvim-test",
-  config = true,
+	"klen/nvim-test",
+	event = { "BufReadPre", "BufNewFile" },
+	config = true,
 }
