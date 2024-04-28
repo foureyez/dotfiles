@@ -5,9 +5,8 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
-
 		local mason = require("mason")
-    mason.setup({})
+		mason.setup({})
 
 		local mason_tool_installer = require("mason-tool-installer")
 		mason_tool_installer.setup({
@@ -24,6 +23,8 @@ return {
 				"golangci-lint",
 				"pyright", --python linter
 				"ruff", --python linter and code formatter written in rust
+
+				"delve",
 			},
 		})
 		local mason_lspconfig = require("mason-lspconfig")
@@ -37,8 +38,6 @@ return {
 				"svelte-language-server",
 				"yaml-language-server",
 				"helm-ls",
-
-				"delve",
 			},
 			automatic_installation = true,
 		})
