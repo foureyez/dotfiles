@@ -47,7 +47,6 @@ else
   export EDITOR='nvim'
 fi
 
-
 # Setup znap 
 [[ -r $ZSH/plugins/znap/znap.zsh ]] ||
     git clone --depth 1 -- \
@@ -57,9 +56,6 @@ source $ZSH/plugins/znap/znap.zsh
 ## Setup zsh-autocomplete
 znap source zdharma-continuum/fast-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
-
-eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
 
 # Setup PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -72,6 +68,9 @@ export PATH=/opt/nvim/bin:$PATH
 
 export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
 
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+
 #Setup Aliases
 alias ls="ls -ltr"
 alias vim=nvim
@@ -81,3 +80,8 @@ alias src="source ~/.zshrc"
 alias tsrc="tmux source ~/.tmux.conf"
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
+
+# Setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
