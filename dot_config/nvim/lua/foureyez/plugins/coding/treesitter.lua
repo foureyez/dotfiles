@@ -31,7 +31,11 @@ return {
 				"rust",
 			},
 			highlight = { enable = true },
-			indent = { enable = true },
+			indent = {
+				disable = { "yaml", "python" },
+				enable = true,
+			},
+			matchup = { enable = false },
 			autotag = { enable = true },
 			auto_install = true,
 			incremental_selection = {
