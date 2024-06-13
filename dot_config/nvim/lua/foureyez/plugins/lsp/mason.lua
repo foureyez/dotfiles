@@ -17,7 +17,7 @@ return {
 					"bash-language-server",
 					"rust-analyzer",
 					"svelte-language-server",
-					"yaml-language-server",
+					-- "yaml-language-server",
 					"helm-ls",
 				},
 				automatic_installation = true,
