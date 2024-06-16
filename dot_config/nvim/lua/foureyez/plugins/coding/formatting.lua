@@ -17,7 +17,7 @@ return {
 				-- yaml = { "prettierd" },
 				css = { "prettierd" },
 				markdown = { "prettierd" },
-				html = { "djlint" },
+				html = { "prettier" },
 				go = {
 					"gofumpt",
 					"goimports-reviser", --[[ "golines"  ]]
@@ -30,18 +30,39 @@ return {
 				lsp_fallback = true,
 			},
 			formatters = {
-				djlint = {
-					prepend_args = { "--indent", "2" },
-					-- This is not working, not able to find the specified rc file. Check later
-					-- prepend_args = { "--configuration", "~/.config/nvim/.djlintrc" },
-				},
+				-- djlint = {
+				-- 	prepend_args = {
+				-- 		"--indent",
+				-- 		"2",
+				-- 		"--profile",
+				-- 		"golang",
+				-- 		"--blank-line-before-tag",
+				-- 		"body",
+				-- 		"--format-attribute-template-tags",
+				-- 	},
+				-- This is not working, not able to find the specified rc file. Check later
+				-- prepend_args = { "--configuration", "~/.config/nvim/.djlintrc" },
+				-- },
 				-- Prettierd not able to resolve any other global plugin
 				-- Use different formattters
-				-- prettierd = {
-				-- 	env = {
-				-- 		PRETTIERD_DEFAULT_CONFIG = "~/.config/nvim/.prettierrc.json",
-				-- 	},
-				-- },
+				prettierd = {
+					env = {
+						PRETTIERD_DEFAULT_CONFIG = "~/.config/nvim/.prettierrc.json",
+					},
+				},
+				prettier = {
+					prepend_args = {
+						"--plugin",
+						vim.fn.expand(
+							"~/.local/share/nvim/mason/packages/prettier/node_modules/prettier-plugin-go-template/lib/index.js"
+						),
+					},
+					options = {
+						ft_parsers = {
+							html = "go-template",
+						},
+					},
+				},
 			},
 		})
 	end,

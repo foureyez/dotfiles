@@ -34,7 +34,6 @@ return {
 			mason_tool_installer.setup({
 				ensure_installed = {
 					"djlint",
-					"prettier",
 					"prettierd",
 					"gofumpt",
 					"rustfmt",
