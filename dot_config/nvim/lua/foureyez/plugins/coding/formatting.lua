@@ -17,7 +17,7 @@ return {
 				-- yaml = { "prettierd" },
 				css = { "prettierd" },
 				markdown = { "prettierd" },
-				html = { "prettierd" },
+				html = { "djlint" },
 				go = {
 					"gofumpt",
 					"goimports-reviser", --[[ "golines"  ]]
@@ -28,6 +28,20 @@ return {
 				-- These options will be passed to conform.format()
 				timeout_ms = 500,
 				lsp_fallback = true,
+			},
+			formatters = {
+				djlint = {
+					prepend_args = { "--indent", "2" },
+					-- This is not working, not able to find the specified rc file. Check later
+					-- prepend_args = { "--configuration", "~/.config/nvim/.djlintrc" },
+				},
+				-- Prettierd not able to resolve any other global plugin
+				-- Use different formattters
+				-- prettierd = {
+				-- 	env = {
+				-- 		PRETTIERD_DEFAULT_CONFIG = "~/.config/nvim/.prettierrc.json",
+				-- 	},
+				-- },
 			},
 		})
 	end,

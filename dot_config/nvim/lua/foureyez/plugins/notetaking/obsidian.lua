@@ -21,6 +21,10 @@ return {
 		require("obsidian").setup({
 			workspaces = {
 				{
+					name = "personal_linux",
+					path = "~/workspace/obsidian-vault",
+				},
+				{
 					name = "personal",
 					path = "~/personal_workspace/obsidian-vault",
 				},
