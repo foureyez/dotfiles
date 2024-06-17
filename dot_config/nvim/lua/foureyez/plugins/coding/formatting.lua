@@ -45,11 +45,11 @@ return {
 				-- },
 				-- Prettierd not able to resolve any other global plugin
 				-- Use different formattters
-				prettierd = {
-					env = {
-						PRETTIERD_DEFAULT_CONFIG = "~/.config/nvim/.prettierrc.json",
-					},
-				},
+				-- prettierd = {
+				-- 	env = {
+				-- 		PRETTIERD_DEFAULT_CONFIG = "~/.config/nvim/.prettierrc.json",
+				-- 	},
+				-- },
 				prettier = {
 					prepend_args = {
 						"--plugin",
