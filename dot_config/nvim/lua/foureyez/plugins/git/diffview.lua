@@ -5,7 +5,7 @@ return {
 		wk.register({
 			["<leader>gf"] = { "<cmd>DiffviewFileHistory %<CR>", "Open Git History for current file" },
 			["<leader>gh"] = { "<cmd>DiffviewFileHistory<CR>", "Open git history" },
-			["<leader>gc"] = { "<cmd>DiffviewClose<CR>", "Open git history" },
+			["<leader>gq"] = { "<cmd>DiffviewClose<CR>", "Open git history" },
 		})
 	end,
 }
