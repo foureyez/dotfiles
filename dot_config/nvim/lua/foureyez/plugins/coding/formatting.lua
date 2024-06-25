@@ -17,7 +17,7 @@ return {
 				-- yaml = { "prettierd" },
 				css = { "prettierd" },
 				markdown = { "prettierd" },
-				html = { "prettier" },
+				html = { "prettierd" },
 				go = {
 					"gofumpt",
 					"goimports-reviser", --[[ "golines"  ]]
@@ -51,17 +51,17 @@ return {
 				-- 	},
 				-- },
 				prettier = {
-					prepend_args = {
-						"--plugin",
-						vim.fn.expand(
-							"~/.local/share/nvim/mason/packages/prettier/node_modules/prettier-plugin-go-template/lib/index.js"
-						),
-					},
-					options = {
-						ft_parsers = {
-							html = "go-template",
-						},
-					},
+					-- 	prepend_args = {
+					-- 		"--plugin",
+					-- 		vim.fn.expand(
+					-- 			"~/.local/share/nvim/mason/packages/prettier/node_modules/prettier-plugin-go-template/lib/index.js"
+					-- 		),
+					-- 	},
+					-- 	options = {
+					-- 		ft_parsers = {
+					-- 			html = "go-template",
+					-- 		},
+					-- 	},
 				},
 			},
 		})

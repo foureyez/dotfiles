@@ -165,6 +165,15 @@ return {
 			capabilities = capabilities,
 		})
 
+		lspconfig.tsserver.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		lspconfig.tailwindcss.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 		-- lspconfig.helm_ls.setup({
 		-- 	on_attach = on_attach,
 		-- 	capabilities = capabilities,

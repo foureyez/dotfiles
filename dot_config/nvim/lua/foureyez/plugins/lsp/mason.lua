@@ -14,6 +14,8 @@ return {
 					"gopls",
 					"lua-language-server",
 					"ansible-language-server",
+					"typescript-language-server",
+					"tailwindcss-language-server",
 					"bash-language-server",
 					"rust-analyzer",
 					"svelte-language-server",
@@ -50,16 +52,6 @@ return {
 			})
 			local mason_lspconfig = require("mason-lspconfig")
 			mason_lspconfig.setup({
-				ensure_installed = {
-					"gopls",
-					"lua-language-server",
-					"ansible-language-server",
-					"bash-language-server",
-					"rust-analyzer",
-					"svelte-language-server",
-					"yaml-language-server",
-					-- "helm-ls",
-				},
 				automatic_installation = true,
 			})
 		end,
