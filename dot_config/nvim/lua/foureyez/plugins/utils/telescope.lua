@@ -33,6 +33,7 @@ return {
 			},
 		})
 		require("telescope").load_extension("dap")
+		require("telescope").load_extension("lazygit")
 		--  require("telescope").load_extension("file_browser")
 
 		-- Setup Keymaps
