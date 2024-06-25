@@ -117,7 +117,6 @@ return {
 						parameterNames = true,
 						rangeVariableTypes = true,
 					},
-					experimentalPostfixCompletions = true,
 					analyses = {
 						fieldalignment = true,
 						nilness = true,
