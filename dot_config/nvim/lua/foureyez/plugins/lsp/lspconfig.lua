@@ -174,16 +174,17 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		-- lspconfig.helm_ls.setup({
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- 	settings = {
-		-- 		["helm-ls"] = {
-		-- 			yamlls = {
-		-- 				path = "yaml-language-server",
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
+
+		lspconfig.helm_ls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				["helm-ls"] = {
+					yamlls = {
+						path = "yaml-language-server",
+					},
+				},
+			},
+		})
 	end,
 }

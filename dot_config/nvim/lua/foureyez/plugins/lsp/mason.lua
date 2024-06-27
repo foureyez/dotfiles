@@ -20,7 +20,7 @@ return {
 					"rust_analyzer", -- rust-analyzer
 					"svelte", -- svelte-language-server
 					-- "yaml-language-server",
-					-- "helm-ls",
+					"helm_ls",
 				},
 				automatic_installation = true,
 			})
