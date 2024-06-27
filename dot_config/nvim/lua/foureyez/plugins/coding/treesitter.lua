@@ -1,7 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"RRethy/nvim-treesitter-textsubjects",
@@ -34,15 +34,15 @@ return {
 				enable = true,
 				disable = { "yaml", "python" },
 			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-v>",
-					node_incremental = "<C-v>",
-					node_decremental = "<C-V>",
-					scope_incremental = false,
-				},
-			},
+			-- incremental_selection = {
+			-- 	enable = true,
+			-- 	keymaps = {
+			-- 		init_selection = "<C-v>",
+			-- 		node_incremental = "<C-v>",
+			-- 		node_decremental = "<C-V>",
+			-- 		scope_incremental = false,
+			-- 	},
+			-- },
 
 			textobjects = {
 				select = {
