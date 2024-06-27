@@ -1,6 +1,6 @@
 return {
-	"plasticboy/vim-markdown",
-	event = { "BufReadPre", "BufNewFile" },
-	branch = "master",
-	dependencies = { "godlygeek/tabular" },
+	-- "plasticboy/vim-markdown",
+	-- event = { "BufReadPre", "BufNewFile" },
+	-- branch = "master",
+	-- dependencies = { "godlygeek/tabular" },
 }
