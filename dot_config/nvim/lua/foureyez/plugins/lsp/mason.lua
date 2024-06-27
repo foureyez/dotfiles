@@ -12,13 +12,13 @@ return {
 			mason_lspconfig.setup({
 				ensure_installed = {
 					"gopls",
-					"lua-language-server",
-					"ansible-language-server",
-					"typescript-language-server",
-					"tailwindcss-language-server",
-					"bash-language-server",
-					"rust-analyzer",
-					"svelte-language-server",
+					"lua_ls", -- lua-language-server
+					-- "ansible-language-server",
+					"tsserver", -- typescript-language-server
+					"tailwindcss", -- tailwindcss-language-server
+					"bashls", -- bash-langugage-server
+					"rust_analyzer", -- rust-analyzer
+					"svelte", -- svelte-language-server
 					-- "yaml-language-server",
 					-- "helm-ls",
 				},
