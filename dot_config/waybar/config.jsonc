@@ -78,7 +78,7 @@
 	"interval": 5,
 	"nospacing": 1,
     },
-    "pulseaudio": {
+    "pipewire": {
         "format": "{icon}",
         "format-bluetooth": "󰂰",
         "nospacing": 1,

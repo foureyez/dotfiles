@@ -24,6 +24,7 @@ return {
 				"css",
 				"svelte",
 				"rust",
+				"odin",
 			},
 			auto_install = true,
 			highlight = {

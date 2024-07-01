@@ -21,6 +21,7 @@ return {
 					"svelte", -- svelte-language-server
 					-- "yaml-language-server",
 					"helm_ls",
+					"ols",
 				},
 				automatic_installation = true,
 			})
