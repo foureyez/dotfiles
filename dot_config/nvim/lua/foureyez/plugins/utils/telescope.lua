@@ -13,8 +13,10 @@ return {
 			extensions = {
 				project = {
 					theme = "dropdown",
+					hidden_files = true,
 					order_by = "asc",
 					sync_with_nvim_tree = true, -- default false
+					search_by = "title",
 					on_project_selected = function(prompt_bufnr)
 						local project_actions = require("telescope._extensions.project.actions")
 						project_actions.change_working_directory(prompt_bufnr, false)
