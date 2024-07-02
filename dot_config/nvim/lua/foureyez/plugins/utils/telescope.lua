@@ -9,6 +9,14 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		telescope.setup({
+			pickers = {
+				current_buffer_fuzzy_find = {
+					previewer = false,
+				},
+				find_files = {
+					previewer = false,
+				},
+			},
 			extensions_list = { "project" },
 			extensions = {
 				project = {
@@ -44,6 +52,7 @@ return {
 			["<leader>f"] = {
 				name = "+file",
 				f = { "<cmd>Telescope find_files<CR>", "Find Files" },
+				b = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find Files" },
 				a = { "<cmd> Telescope live_grep<CR>", "Live Grep" },
 			},
 			["<leader>;"] = {
