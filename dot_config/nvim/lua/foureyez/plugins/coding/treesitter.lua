@@ -25,6 +25,7 @@ return {
 				"svelte",
 				"rust",
 				"odin",
+				"glsl",
 			},
 			auto_install = true,
 			highlight = {

@@ -22,6 +22,7 @@ return {
 					-- "yaml-language-server",
 					"helm_ls",
 					"ols",
+					"glsl_analyzer",
 				},
 				automatic_installation = true,
 			})
