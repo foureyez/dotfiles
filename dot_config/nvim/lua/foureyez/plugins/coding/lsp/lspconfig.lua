@@ -3,7 +3,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		{ "folke/neodev.nvim", opts = {} },
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	opts = {

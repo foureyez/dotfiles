@@ -30,7 +30,11 @@ return {
 			auto_install = true,
 			highlight = {
 				enable = true,
+				language_tree = true,
 				additional_vim_regex_highlighting = false,
+				-- disable = function()
+				-- 	return vim.b.large_buf
+				-- end,
 			},
 			indent = {
 				enable = true,

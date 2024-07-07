@@ -57,6 +57,13 @@ source $ZSH/plugins/znap/znap.zsh
 znap source zdharma-continuum/fast-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
 
+export VULKAN_SDK=$HOME/vulkan/1.3.283.0/x86_64
+export LD_LIBRARY_PATH=$VULKAN_SDK/lib
+export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+export VK_ADD_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+
+export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
+
 # Setup PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -66,8 +73,8 @@ export PATH=$HOME/softwares/nvim/bin:$PATH
 export PATH=$HOME/ssh-keys:$PATH
 export PATH=/opt/nvim/bin:$PATH
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH=$VULKAN_SDK/bin:$PATH
 
-export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
