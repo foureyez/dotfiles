@@ -1,6 +1,5 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.6",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-project.nvim",
@@ -8,13 +7,34 @@ return {
 	},
 	config = function()
 		local telescope = require("telescope")
+		telescope.load_extension("dap")
+		telescope.load_extension("lazygit")
+		-- telescope.load_extension("file_browser")
+
 		telescope.setup({
 			pickers = {
+				buffers = {
+					previewer = false,
+					theme = "dropdown",
+					mappings = {
+						n = {
+							["<C-e>"] = "delete_buffer",
+							["l"] = "select_default",
+						},
+					},
+					initial_mode = "normal",
+				},
 				current_buffer_fuzzy_find = {
 					previewer = false,
 				},
 				find_files = {
 					previewer = false,
+					layout_config = {
+						prompt_position = "top",
+						width = 0.4,
+					},
+					sorting_strategy = "ascending",
+					theme = "dropdown",
 				},
 			},
 			extensions_list = { "project" },
@@ -40,11 +60,14 @@ return {
 						depth = 1,
 					},
 				},
+				heading = {
+					treesitter = true,
+				},
+				advanced_git_search = {
+					diff_plugin = "diffview",
+				},
 			},
 		})
-		require("telescope").load_extension("dap")
-		require("telescope").load_extension("lazygit")
-		--  require("telescope").load_extension("file_browser")
 
 		-- Setup Keymaps
 		local wk = require("which-key")
@@ -52,8 +75,8 @@ return {
 			["<leader>f"] = {
 				name = "+file",
 				f = { "<cmd>Telescope find_files<CR>", "Find Files" },
-				b = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find Files" },
 				a = { "<cmd> Telescope live_grep<CR>", "Live Grep" },
+				b = { "<cmd> Telescope buffers theme=dropdown<CR>", "Open Buffers" },
 			},
 			["<leader>;"] = {
 				function()
