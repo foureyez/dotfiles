@@ -52,7 +52,7 @@ return {
 			vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 			opts.desc = "Go to previous diagnostic"
-			vim.keymap.set("n", "<leader>dk", vim.diagnostic.jump, opts) -- jump to previous diagnostic in buffer
+			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
 			opts.desc = "Go to next diagnostic"
 			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
