@@ -49,7 +49,7 @@ return {
 			vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
 			opts.desc = "Show line diagnostics"
-			vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float, opts) -- show diagnostics for line
+			vim.keymap.set("n", "<leader>dK", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 			opts.desc = "Go to previous diagnostic"
 			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
