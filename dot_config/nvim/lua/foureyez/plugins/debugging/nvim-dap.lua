@@ -17,30 +17,35 @@ return {
 		end
 
 		local wk = require("which-key")
-		wk.register({
-			["<F5>"] = {
-				function()
-					require("dap").continue()
-				end,
-				"Debugger Continue",
-			},
-			["<F10>"] = {
+		wk.add({
+			{
+				"<F10>",
 				function()
 					require("dap").step_over()
 				end,
-				"Debugger step over",
+				desc = "Debugger step over",
 			},
-			["<F11>"] = {
+			{
+				"<F11>",
+
 				function()
 					require("dap").step_into()
 				end,
-				"Debugger step into",
+				desc = "Debugger step into",
 			},
-			["<F12>"] = {
+			{
+				"<F12>",
 				function()
 					require("dap").step_out()
 				end,
-				"Debugger step out",
+				desc = "Debugger step out",
+			},
+			{
+				"<F5>",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Debugger Continue",
 			},
 		})
 	end,

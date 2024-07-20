@@ -30,33 +30,35 @@ return {
 		end
 
 		local wk = require("which-key")
-		wk.register({
-			["<leader>h"] = {
-				name = "harpoon",
-				a = {
-					function()
-						harpoon:list():add()
-					end,
-					"Mark File",
-				},
-				l = {
-					function()
-						toggle_telescope(harpoon:list())
-					end,
-					"Toggle Quick menu",
-				},
-				p = {
-					function()
-						harpoon:list():prev()
-					end,
-					"Prev file",
-				},
-				n = {
-					function()
-						harpoon:list():next()
-					end,
-					"Next File",
-				},
+		wk.add({
+			{ "<leader>h", group = "harpoon" },
+			{
+				"<leader>ha",
+				function()
+					harpoon:list():add()
+				end,
+				desc = "Mark File",
+			},
+			{
+				"<leader>hl",
+				function()
+					toggle_telescope(harpoon:list())
+				end,
+				desc = "Toggle Quick menu",
+			},
+			{
+				"<leader>hn",
+				function()
+					harpoon:list():next()
+				end,
+				desc = "Next File",
+			},
+			{
+				"<leader>hp",
+				function()
+					harpoon:list():prev()
+				end,
+				desc = "Prev file",
 			},
 		})
 	end,

@@ -71,25 +71,25 @@ return {
 
 		-- Setup Keymaps
 		local wk = require("which-key")
-		wk.register({
-			["<leader>f"] = {
-				name = "+file",
-				f = { "<cmd>Telescope find_files<CR>", "Find Files" },
-				a = { "<cmd> Telescope live_grep<CR>", "Live Grep" },
-				b = { "<cmd> Telescope buffers theme=dropdown<CR>", "Open Buffers" },
-			},
-			["<leader>;"] = {
+		wk.add({
+			{
+				"<leader>;",
 				function()
 					telescope.extensions.project.project({})
 				end,
-				"Switch Project",
+				desc = "Switch Project",
 			},
-			["<leader>dl"] = {
+			{
+				"<leader>dl",
 				function()
 					telescope.extensions.dap.list_breakpoints({})
 				end,
-				"Switch Project",
+				desc = "List all debug endpoints",
 			},
+			{ "<leader>f", group = "file" },
+			{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+			{ "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", desc = "Open Buffers" },
+			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 		})
 	end,
 }

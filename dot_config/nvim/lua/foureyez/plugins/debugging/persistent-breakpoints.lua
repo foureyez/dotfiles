@@ -6,18 +6,21 @@ return {
 		})
 
 		local wk = require("which-key")
-		wk.register({
-			["<leader>db"] = {
+		wk.add({
+			{
+				"<leader>db",
 				"<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",
-				"Toggle breakpoint at line",
+				desc = "Toggle breakpoint at line",
 			},
-			["<leader>dcb"] = {
+			{
+				"<leader>dcb",
 				"<cmd>lua require('persistent-breakpoints.api').set_conditional_breakpoint()<cr>",
-				"Set conditional breakpoint at line",
+				desc = "Set conditional breakpoint at line",
 			},
-			["<leader>dcc"] = {
+			{
+				"<leader>dcc",
 				"<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
-				"Clear all breakpoints",
+				desc = "Clear all breakpoints",
 			},
 		})
 	end,

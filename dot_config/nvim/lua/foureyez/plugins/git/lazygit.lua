@@ -10,8 +10,8 @@ return {
 
 		-- Add Mappings
 		local wk = require("which-key")
-		wk.register({
-			["<leader>gg"] = { "<cmd>LazyGitCurrentFile<CR>", "Open LazyGit" },
+		wk.add({
+			{ "<leader>gg", "<cmd>LazyGitCurrentFile<CR>", desc = "Open LazyGit" },
 		})
 	end,
 }

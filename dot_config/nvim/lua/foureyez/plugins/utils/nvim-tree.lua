@@ -56,9 +56,9 @@ return {
 
 		-- SETUP KEYMAPS
 		local wk = require("which-key")
-		wk.register({
-			["<leader>e"] = { "<CMD>NvimTreeFocus<CR>", "Focus Nvimtree" },
-			["<C-n>"] = { "<CMD>NvimTreeToggle<CR>", "Toggle nvimtree" },
+		wk.add({
+			{ "<C-n>", "<CMD>NvimTreeToggle<CR>", desc = "Toggle nvimtree" },
+			{ "<leader>e", "<CMD>NvimTreeFocus<CR>", desc = "Focus Nvimtree" },
 		})
 	end,
 }
