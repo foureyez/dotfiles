@@ -14,7 +14,7 @@ return {
 					"gopls",
 					"lua_ls", -- lua-language-server
 					-- "ansible-language-server",
-					"tsserver", -- typescript-language-server
+					"ts_ls", -- typescript-language-server
 					"tailwindcss", -- tailwindcss-language-server
 					"bashls", -- bash-langugage-server
 					"rust_analyzer", -- rust-analyzer
