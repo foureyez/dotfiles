@@ -1,5 +1,5 @@
 return {
-	{ "echasnovski/mini.files", version = false },
+	-- { "echasnovski/mini.files", version = false },
 	{
 		"stevearc/oil.nvim",
 		opts = {
