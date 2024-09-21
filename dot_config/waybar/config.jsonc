@@ -14,10 +14,16 @@
         "tray",
         "memory",
         "network",
-        "pulseaudio",
+        "wireplumber",
         "battery",
         "custom/power"
     ],
+    "wireplumber": {
+      "format": "{volume}% {icon}",
+      "format-muted": "",
+      "on-click": "helvum",
+      "format-icons": ["", "", ""]
+    },
     "wlr/taskbar": {
         "format": "{icon}",
         "on-click": "activate",

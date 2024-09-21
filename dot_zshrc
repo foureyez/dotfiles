@@ -73,8 +73,9 @@ alias zshrc="source ~/.zshrc"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -83,5 +84,5 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
     git clone --depth 1 -- \
         https://github.com/marlonrichert/zsh-snap.git ~/.zsh/znap
 source ~/.zsh/znap/znap.zsh  # Start Znap
-znap source marlonrichert/zsh-autocomplete
 znap source zdharma-continuum/fast-syntax-highlighting
+znap source marlonrichert/zsh-autocomplete
