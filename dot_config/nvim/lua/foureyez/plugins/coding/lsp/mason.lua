@@ -15,10 +15,10 @@ return {
 					"lua_ls", -- lua-language-server
 					-- "ansible-language-server",
 					"ts_ls", -- typescript-language-server
-					"tailwindcss", -- tailwindcss-language-server
+					-- "tailwindcss", -- tailwindcss-language-server
 					"bashls", -- bash-langugage-server
 					"rust_analyzer", -- rust-analyzer
-					"svelte", -- svelte-language-server
+					-- "svelte", -- svelte-language-server
 					-- "yaml-language-server",
 					"helm_ls",
 					"ols",
@@ -47,8 +47,8 @@ return {
 					"impl", --golang generate method stubs for implementing interface
 					"black", --python formatter
 					"golangci-lint",
-					"pyright", --python linter
-					"ruff", --python linter and code formatter written in rust
+					-- "pyright", --python linter
+					-- "ruff", --python linter and code formatter written in rust
 					"delve",
 				},
 			})
