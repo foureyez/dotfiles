@@ -19,7 +19,6 @@ require("lazy").setup({
 	{ import = "foureyez.plugins" },
 	{ import = "foureyez.plugins.ui" },
 	{ import = "foureyez.plugins.coding" },
-	{ import = "foureyez.plugins.coding.lsp" },
 	{ import = "foureyez.plugins.debugging" },
 	{ import = "foureyez.plugins.git" },
 }, {
