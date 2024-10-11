@@ -90,6 +90,7 @@ return {
 			{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
 			{ "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", desc = "Open Buffers" },
 			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+			{ "<leader>fc", "<cmd>Telescope neoclip plus<CR>", desc = "Find Clipboard" },
 		})
 	end,
 }
