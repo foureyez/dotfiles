@@ -1,5 +1,6 @@
 return {
 	"mfussenegger/nvim-dap",
+	event = "VeryLazy",
 	config = function()
 		-- Automatically open/close dapui when debugger is active/inactive
 		local dap, dapui = require("dap"), require("dapui")
