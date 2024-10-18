@@ -57,6 +57,11 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH=$VULKAN_SDK/bin:$PATH
 
 
+
+# NNN Variables
+export NNN_PLUG="f:fzopen;d:diffs;c:fzcd;a:autojump;r:gitroot"
+# NNN Variables end
+
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 
