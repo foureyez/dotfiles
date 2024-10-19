@@ -94,16 +94,12 @@ outer.right =      5
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
+alt-enter = '''exec-and-forget kitty'''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
+alt-q = 'close'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -216,10 +212,48 @@ if.app-id = 'net.kovidgoyal.kitty'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = 'com.insomnium.app'
+run = "move-node-to-workspace 4"
+
+[[on-window-detected]]
+if.app-id = 'com.mongodb.compass'
+run = "move-node-to-workspace 4"
+
+[[on-window-detected]]
+if.app-id = 'io.github.utilitywarehouse.BloomRPC'
+run = "move-node-to-workspace 4"
+
+[[on-window-detected]]
+if.app-id = 'com.sublimetext.4'
+run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+if.app-id = 'com.deepnight.ldtk'
+run = "move-node-to-workspace 8"
+
+[[on-window-detected]]
+if.app-id = 'org.aseprite.Aseprite'
+run = "move-node-to-workspace 8"
+
+
 
