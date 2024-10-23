@@ -3,6 +3,7 @@ return {
 	version = "*",
 	-- opts = {},
 	-- config = true,
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("toggleterm").setup({
 			highlights = {
@@ -15,7 +16,7 @@ return {
 		local wk = require("which-key")
 		wk.add({
 			{
-				"<leader>tl",
+				"<leader>gg",
 				function()
 					Terminal:new({
 						cmd = "lazygit",
@@ -25,6 +26,11 @@ return {
 					}):toggle()
 				end,
 				desc = "Open LazyGit",
+			},
+			{
+				"<leader>tf",
+				"<cmd>ToggleTerm direction=float<CR>",
+				desc = "Open Floating terminal",
 			},
 		})
 	end,

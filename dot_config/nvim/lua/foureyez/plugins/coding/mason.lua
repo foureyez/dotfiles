@@ -4,6 +4,8 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 		},
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local mason = require("mason")
 			mason.setup()
@@ -33,6 +35,8 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 		},
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local mason_tool_installer = require("mason-tool-installer")
 			mason_tool_installer.setup({

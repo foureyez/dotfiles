@@ -3,11 +3,10 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-project.nvim",
-		"nvim-telescope/telescope-dap.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
-		telescope.load_extension("dap")
+		-- telescope.load_extension("dap")
 		-- telescope.load_extension("file_browser")
 
 		telescope.setup({

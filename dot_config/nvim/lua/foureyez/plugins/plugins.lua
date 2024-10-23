@@ -19,6 +19,8 @@ return {
 	},
 	{
 		"MagicDuck/grug-far.nvim",
+		lazy = true,
+		cmd = "GrugFar",
 		config = function()
 			require("grug-far").setup({})
 		end,
@@ -26,6 +28,8 @@ return {
 	{
 		{
 			"stevearc/oil.nvim",
+			lazy = true,
+			cmd = "Oil",
 			opts = {
 				view_options = {
 					show_hidden = true,
@@ -54,6 +58,10 @@ return {
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
+		lazy = true,
+		keys = {
+			{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+		},
 		dependencies = {
 			{ "kkharji/sqlite.lua", module = "sqlite" },
 			-- you'll need at least one of these
@@ -68,6 +76,8 @@ return {
 	},
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		lazy = true,
+		event = "LspAttach",
 		config = function()
 			require("lsp_lines").setup()
 		end,

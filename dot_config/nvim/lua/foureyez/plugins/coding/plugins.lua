@@ -1,6 +1,8 @@
 return {
 	{
 		"windwp/nvim-ts-autotag",
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("nvim-ts-autotag").setup({})
 		end,
@@ -8,7 +10,7 @@ return {
 	{
 		"kylechui/nvim-surround",
 		-- version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
@@ -18,6 +20,7 @@ return {
 	{
 		"nvim-tree/nvim-web-devicons",
 		config = true,
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"RRethy/vim-illuminate",

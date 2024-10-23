@@ -1,7 +1,15 @@
 return {
 	"mfussenegger/nvim-dap",
-	event = "VeryLazy",
+	lazy = true,
+	dependencies = {
+		"nvim-telescope/telescope.nvim",
+		"nvim-telescope/telescope-dap.nvim",
+	},
+	cmd = "DapContinue",
 	config = function()
+		local telescope = require("telescope")
+		telescope.load_extension("dap")
+
 		-- Automatically open/close dapui when debugger is active/inactive
 		local dap, dapui = require("dap"), require("dapui")
 		dap.listeners.before.attach.dapui_config = function()

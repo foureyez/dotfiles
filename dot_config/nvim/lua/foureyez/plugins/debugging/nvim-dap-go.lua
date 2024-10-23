@@ -2,6 +2,8 @@ return {
 	"leoluz/nvim-dap-go",
 	ft = "go",
 	dependencies = "mfussenegger/nvim-dap",
+	lazy = true,
+	cmd = "DapContinue",
 	config = function()
 		require("dap-go").setup({
 			-- Additional dap configurations can be added.

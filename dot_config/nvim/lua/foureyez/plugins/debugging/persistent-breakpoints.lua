@@ -1,6 +1,7 @@
 return {
 	"Weissle/persistent-breakpoints.nvim",
-	event = "VeryLazy",
+	lazy = true,
+	cmd = "DapContinue",
 	config = function()
 		require("persistent-breakpoints").setup({
 			load_breakpoints_event = { "BufReadPost" },
