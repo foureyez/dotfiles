@@ -15,7 +15,7 @@ return {
 		local wk = require("which-key")
 		wk.add({
 			{
-				"<leader>gg",
+				"<leader>tl",
 				function()
 					Terminal:new({
 						cmd = "lazygit",
