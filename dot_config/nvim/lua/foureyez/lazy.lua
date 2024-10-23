@@ -20,7 +20,6 @@ require("lazy").setup({
 	{ import = "foureyez.plugins.ui" },
 	{ import = "foureyez.plugins.coding" },
 	{ import = "foureyez.plugins.debugging" },
-	{ import = "foureyez.plugins.git" },
 }, {
 	checker = {
 		enabled = true,

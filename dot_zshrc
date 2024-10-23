@@ -55,7 +55,7 @@ export PATH=$HOME/ssh-keys:$PATH
 export PATH=/opt/nvim/bin:$PATH
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH=$VULKAN_SDK/bin:$PATH
-
+export XDG_CONFIG_HOME="$HOME/.config"
 
 
 # NNN Variables

@@ -8,7 +8,6 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		telescope.load_extension("dap")
-		telescope.load_extension("lazygit")
 		-- telescope.load_extension("file_browser")
 
 		telescope.setup({
