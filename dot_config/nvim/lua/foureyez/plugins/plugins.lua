@@ -1,5 +1,6 @@
 return {
 	{
+		event = { "BufReadPre", "BufNewFile" },
 		"christoomey/vim-tmux-navigator",
 	},
 	{
@@ -75,11 +76,16 @@ return {
 		end,
 	},
 	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		lazy = true,
-		event = "LspAttach",
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("lsp_lines").setup()
+			require("gitsigns").setup()
+
+			local wk = require("which-key")
+			wk.add({
+				{ "<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Git blame current file" },
+				{ "<leader>gl", "<cmd>Gitsigns blame_line<CR>", desc = "Git blame current file" },
+			})
 		end,
 	},
 	-- {

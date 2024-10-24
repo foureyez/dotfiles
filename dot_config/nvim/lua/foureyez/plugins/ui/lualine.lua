@@ -1,6 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = "nvim-tree/nvim-web-devicons",
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lazy_status = require("lazy.status")
 		local lint_progress = function()

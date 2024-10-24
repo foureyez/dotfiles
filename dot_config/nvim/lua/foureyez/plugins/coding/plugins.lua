@@ -31,4 +31,12 @@ return {
 		"towolf/vim-helm",
 		ft = "helm",
 	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		lazy = true,
+		event = "LspAttach",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	},
 }
