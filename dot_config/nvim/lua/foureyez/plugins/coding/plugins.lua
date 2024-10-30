@@ -19,8 +19,12 @@ return {
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
-		config = true,
 		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local devicons = require("nvim-web-devicons")
+			devicons.setup({})
+			devicons.set_icon_by_filetype({ cpp = "odin", pandoc = "md" })
+		end,
 	},
 	{
 		"RRethy/vim-illuminate",
@@ -31,12 +35,12 @@ return {
 		"towolf/vim-helm",
 		ft = "helm",
 	},
-	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = function()
-			require("lsp_lines").setup()
-		end,
-	},
+	-- {
+	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	-- 	lazy = true,
+	-- 	event = "LspAttach",
+	-- 	config = function()
+	-- 		require("lsp_lines").setup()
+	-- 	end,
+	-- },
 }

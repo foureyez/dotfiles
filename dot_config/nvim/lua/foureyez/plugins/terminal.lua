@@ -28,6 +28,19 @@ return {
 				desc = "Open LazyGit",
 			},
 			{
+				"<leader>gl",
+				function()
+					Terminal:new({
+						cmd = "gitui",
+						dir = vim.fn.getcwd(),
+						direction = "float",
+						hidden = true,
+					}):toggle()
+				end,
+				desc = "Open LazyGit",
+			},
+
+			{
 				"<leader>tf",
 				"<cmd>ToggleTerm direction=float<CR>",
 				desc = "Open Floating terminal",

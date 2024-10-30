@@ -1,7 +1,7 @@
 return {
 	"Weissle/persistent-breakpoints.nvim",
 	lazy = true,
-	cmd = "DapContinue",
+	event = "BufReadPost",
 	config = function()
 		require("persistent-breakpoints").setup({
 			load_breakpoints_event = { "BufReadPost" },
@@ -15,12 +15,12 @@ return {
 				desc = "Toggle breakpoint at line",
 			},
 			{
-				"<leader>dcb",
+				"<leader>dbc",
 				"<cmd>lua require('persistent-breakpoints.api').set_conditional_breakpoint()<cr>",
 				desc = "Set conditional breakpoint at line",
 			},
 			{
-				"<leader>dcc",
+				"<leader>dbd",
 				"<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
 				desc = "Clear all breakpoints",
 			},

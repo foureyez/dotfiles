@@ -84,7 +84,7 @@ return {
 			local wk = require("which-key")
 			wk.add({
 				{ "<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Git blame current file" },
-				{ "<leader>gl", "<cmd>Gitsigns blame_line<CR>", desc = "Git blame current file" },
+				{ "<leader>gbl", "<cmd>Gitsigns blame_line<CR>", desc = "Git blame current file" },
 			})
 		end,
 	},

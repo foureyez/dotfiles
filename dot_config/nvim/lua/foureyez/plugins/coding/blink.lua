@@ -13,6 +13,7 @@ return {
 		-- build = 'cargo build --release',
 
 		opts = {
+			keymap = "super-tab",
 			highlight = {
 				-- sets the fallback highlight groups to nvim-cmp's highlight groups
 				-- useful for when your theme doesn't support blink.cmp

@@ -25,25 +25,27 @@ return {
 			dapui.close()
 		end
 
+		vim.api.nvim_create_user_command("DapUIClose", dapui.close, {})
+		vim.api.nvim_create_user_command("DapUIOpen", dapui.open, {})
+
 		local wk = require("which-key")
 		wk.add({
 			{
-				"<F10>",
+				"<F3>",
 				function()
 					require("dap").step_over()
 				end,
 				desc = "Debugger step over",
 			},
 			{
-				"<F11>",
-
+				"<F2>",
 				function()
 					require("dap").step_into()
 				end,
 				desc = "Debugger step into",
 			},
 			{
-				"<F12>",
+				"<F4>",
 				function()
 					require("dap").step_out()
 				end,
