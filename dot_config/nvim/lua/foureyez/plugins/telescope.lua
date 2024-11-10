@@ -90,5 +90,9 @@ return {
 			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 			{ "<leader>fc", "<cmd>Telescope neoclip plus<CR>", desc = "Find Clipboard" },
 		})
+
+		-- if vim.v.argv[3] == nil then
+		-- 	telescope.extensions.project.project({})
+		-- end
 	end,
 }

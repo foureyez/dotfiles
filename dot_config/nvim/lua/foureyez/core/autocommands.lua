@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 		if ok and stats and (stats.size > 100000) then
 			vim.b.large_buf = true
 			vim.cmd("syntax off")
-			vim.cmd("IlluminatePauseBuf") -- disable vim-illuminate
+			-- vim.cmd("IlluminatePauseBuf") -- disable vim-illuminate
 			pcall(vim.cmd, "IBLDisable") -- disable indent-blankline.nvim
 			vim.opt_local.foldmethod = "manual"
 			vim.opt_local.spell = false

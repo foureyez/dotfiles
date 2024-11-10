@@ -17,19 +17,20 @@ return {
 			})
 		end,
 	},
-	{
-		"nvim-tree/nvim-web-devicons",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local devicons = require("nvim-web-devicons")
-			devicons.setup({})
-			devicons.set_icon_by_filetype({ cpp = "odin", pandoc = "md" })
-		end,
-	},
-	{
-		"RRethy/vim-illuminate",
-		event = { "BufReadPre", "BufNewFile" },
-	},
+	-- {
+	-- 	"RRethy/vim-illuminate",
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	config = function()
+	-- 		require("illuminate").configure({
+	-- 			providers = {
+	-- 				"lsp",
+	-- 				"treesitter",
+	-- 				-- "regex",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
+	-- quite slow for large files, do i need this?
 	{
 		-- This is to detect the helm (yaml) filetypes for helm_ls to attach
 		"towolf/vim-helm",
@@ -43,4 +44,13 @@ return {
 	-- 		require("lsp_lines").setup()
 	-- 	end,
 	-- },
+	{
+		"monkoose/DoNe",
+		lazy = true,
+		-- optional configuration
+		config = function()
+			-- as example adding some keybindings
+			--- ...
+		end,
+	},
 }
