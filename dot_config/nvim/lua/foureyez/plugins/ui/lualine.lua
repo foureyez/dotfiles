@@ -15,7 +15,7 @@ return {
 		require("lualine").setup({
 			options = {
 				-- theme = "onedark",
-				theme = "kanagawa",
+				theme = "kanagawa-dragon",
 				disabled_filetypes = { "packer", "NvimTree" },
 			},
 			sections = {

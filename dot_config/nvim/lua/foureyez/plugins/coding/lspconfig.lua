@@ -15,11 +15,15 @@ return {
 			},
 		},
 	},
-	config = function()
+	config = function(_, opts)
 		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		-- local capabilities = cmp_nvim_lsp.default_capabilities()
 		local capabilities = {}
 		local lspconfig = require("lspconfig")
+		for server, config in pairs(opts.servers or {}) do
+			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			lspconfig[server].setup(config)
+		end
 
 		local opts = { noremap = true, silent = true }
 		local on_attach = function(client, bufnr)
