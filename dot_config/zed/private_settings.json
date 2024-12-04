@@ -1,0 +1,41 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "auto_update_extensions": {
+    "odin": true
+  },
+  "ui_font_size": 16,
+  "unstable.ui_density": "compact",
+  "buffer_font_size": 15,
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 400,
+  "buffer_font_features": {},
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Gruvbox Dark Hard"
+  },
+  "vim_mode": true,
+  "vertical_scroll_margin": 15,
+  "buffer_font_family": "Fira Code"
+}

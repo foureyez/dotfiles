@@ -1,0 +1,41 @@
+[
+  {
+    "bindings": {
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-shift-h": "pane::ActivatePrevItem",
+      "ctrl-shift-l": "pane::ActivateNextItem",
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-r": "task::Spawn"
+    }
+  },
+  {
+    "context": "Editor && vim_mode != insert",
+    "bindings": {
+      "space ;": "projects::OpenRecent",
+      "space f f": "file_finder::Toggle",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "s": "project_panel::NewDirectory",
+      "d": "project_panel::Trash",
+      "c": "project_panel::Copy",
+      "v": "project_panel::Paste",
+      "x": "project_panel::Cut"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-n": "workspace::NewTerminal",
+      "ctrl-f": "workspace::ToggleZoom"
+    }
+  }
+]

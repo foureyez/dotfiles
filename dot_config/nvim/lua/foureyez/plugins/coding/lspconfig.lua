@@ -163,21 +163,6 @@ return {
 			capabilities = capabilities,
 		})
 
-		lspconfig.svelte.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		lspconfig.ts_ls.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		lspconfig.tailwindcss.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
 		lspconfig.helm_ls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
@@ -203,6 +188,29 @@ return {
 		lspconfig.terraformls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+		})
+
+		lspconfig.svelte.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		lspconfig.ts_ls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern("package.json"),
+			single_file_support = false,
+		})
+
+		lspconfig.tailwindcss.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		lspconfig.denols.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 		})
 	end,
 }
