@@ -13,11 +13,23 @@
     }
   },
   {
-    "context": "Editor && vim_mode != insert",
+    "context": "EmptyPane || Editor && mode == full && VimControl && vim_mode == normal",
     "bindings": {
       "space ;": "projects::OpenRecent",
       "space f f": "file_finder::Toggle",
-      "space e": "project_panel::ToggleFocus"
+      "space e": "project_panel::ToggleFocus",
+
+      "g r": "editor::FindAllReferences",
+      "space d k": "editor::GoToPrevDiagnostic",
+      "space d j": "editor::GoToDiagnostic",
+      "space s": "project_symbols::Toggle",
+      "space f a": "workspace::NewSearch"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "alt-enter": "editor::OpenExcerpts"
     }
   },
   {
