@@ -1,15 +1,18 @@
 [
   {
     "bindings": {
-      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-\\": "workspace::ToggleLeftDock",
+      "ctrl-b": "workspace::ToggleRightDock",
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-shift-h": "pane::ActivatePrevItem",
       "ctrl-shift-l": "pane::ActivateNextItem",
-      "ctrl-t": "workspace::ToggleBottomDock",
-      "ctrl-r": "task::Spawn"
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-r": "task::Spawn",
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-n": "workspace::NewFile"
     }
   },
   {
@@ -25,7 +28,8 @@
       "space d k": "editor::GoToPrevDiagnostic",
       "space d j": "editor::GoToDiagnostic",
       "space s": "project_symbols::Toggle",
-      "space f a": "workspace::NewSearch"
+      "space f a": "workspace::NewSearch",
+      "space d d": "diagnostics::Deploy"
     }
   },
   {
@@ -35,13 +39,18 @@
     }
   },
   {
-    "context": "ProjectPanel",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
       "space ;": "projects::OpenRecent",
       "space f f": "file_finder::Toggle",
+      "n": "menu::SelectNext",
+      "p": "menu::SelectPrev",
+      "ctrl-d": ["workspace::SendKeystrokes", "n n n n n"], // Scroll down 5 times
+      "ctrl-u": ["workspace::SendKeystrokes", "p p p p p"], // Scroll up 5 times
+      "q": "project_panel::Open",
+      "o": ["workspace::SendKeystrokes", "q ctrl-\\"], // Open the file, Close the project_panel
       "a": "project_panel::NewFile",
       "r": "project_panel::Rename",
-      "s": "project_panel::NewDirectory",
       "d": "project_panel::Trash",
       "c": "project_panel::Copy",
       "v": "project_panel::Paste",
@@ -53,6 +62,12 @@
     "bindings": {
       "ctrl-n": "workspace::NewTerminal",
       "ctrl-f": "workspace::ToggleZoom"
+    }
+  },
+  {
+    "context": "PromptLibrary",
+    "bindings": {
+      "ctrl-w": "workspace::CloseWindow"
     }
   }
 ]

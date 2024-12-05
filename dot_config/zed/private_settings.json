@@ -1,6 +1,34 @@
 {
+  "ui_font_size": 16,
+  "unstable.ui_density": "compact",
+  "buffer_font_size": 14.5,
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 400,
+  "buffer_font_features": {},
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Ayu Mirage"
+  },
+  "vim_mode": true,
+  // 1. Never automatically save:
+  //     "autosave": "off",
+  // 2. Save when changing focus away from the Zed window:
+  //     "autosave": "on_window_change",
+  // 3. Save when changing focus away from a specific buffer:
+  //     "autosave": "on_focus_change",
+  // 4. Save when idle for a certain amount of time:
+  //     "autosave": { "after_delay": {"milliseconds": 500} },
+  "autosave": "on_focus_change",
+  "vertical_scroll_margin": 15,
+  "buffer_font_family": "Fira Code",
+  "tab_size": 2,
+  "centered_layout": {
+    "left_padding": 0.1,
+    "right_padding": 0.1
+  },
   "features": {
-    "inline_completion_provider": "none"
+    "inline_completion_provider": "supermaven"
   },
   "telemetry": {
     "metrics": false,
@@ -16,19 +44,42 @@
   "auto_update_extensions": {
     "odin": true
   },
-  "ui_font_size": 16,
-  "unstable.ui_density": "compact",
-  "buffer_font_size": 14,
-  "buffer_line_height": "standard",
-  "buffer_font_weight": 400,
-  "buffer_font_features": {},
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Andromeda"
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
   },
-  "vim_mode": true,
-  "vertical_scroll_margin": 15,
-  "buffer_font_family": "Fira Code",
-  "tab_size": 2
+  "preview_tabs": {
+    // Whether preview tabs should be enabled.
+    // Preview tabs allow you to open files in preview mode, where they close automatically
+    // when you switch to another file unless you explicitly pin them.
+    // This is useful for quickly viewing files without cluttering your workspace.
+    "enabled": true,
+    // Whether to open tabs in preview mode when selected from the file finder.
+    "enable_preview_from_file_finder": true,
+    // Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
+    "enable_preview_from_code_navigation": true
+  },
+  "outline_panel": {
+    "button": true,
+    "default_width": 300,
+    "dock": "right",
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "indent_size": 20,
+    "auto_reveal_entries": true,
+    "auto_fold_dirs": true,
+    "indent_guides": {
+      "show": "always"
+    },
+    "scrollbar": {
+      "show": "auto"
+    }
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": false
+  }
 }
