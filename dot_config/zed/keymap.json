@@ -20,6 +20,8 @@
       "space e": "project_panel::ToggleFocus",
 
       "g r": "editor::FindAllReferences",
+      "g i": "editor::GoToImplementation",
+      "r n": "editor::Rename",
       "space d k": "editor::GoToPrevDiagnostic",
       "space d j": "editor::GoToDiagnostic",
       "space s": "project_symbols::Toggle",
@@ -35,7 +37,10 @@
   {
     "context": "ProjectPanel",
     "bindings": {
+      "space ;": "projects::OpenRecent",
+      "space f f": "file_finder::Toggle",
       "a": "project_panel::NewFile",
+      "r": "project_panel::Rename",
       "s": "project_panel::NewDirectory",
       "d": "project_panel::Trash",
       "c": "project_panel::Copy",
