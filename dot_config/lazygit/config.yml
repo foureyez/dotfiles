@@ -8,10 +8,10 @@ gui:
   border: single
   theme:
     activeBorderColor:
-      - '#8bd5ca'
+      - '#ddd'
       - bold
     inactiveBorderColor:
-      - '#355258'
+      - '#615d59'
     optionsTextColor:
       - '#8aadf4'
     selectedLineBgColor:
