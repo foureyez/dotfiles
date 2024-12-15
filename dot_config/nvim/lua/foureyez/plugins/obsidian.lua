@@ -22,7 +22,7 @@ return {
 			workspaces = {
 				{
 					name = "personal",
-					path = "~/workspace/obsidian-vault",
+					path = "~/workspace/obsidian",
 				},
 			},
 			notes_subdir = "notes",
