@@ -52,24 +52,24 @@ return {
 		--   -- refer to the configuration section below
 		-- },
 	},
-	{
-		"AckslD/nvim-neoclip.lua",
-		lazy = true,
-		keys = {
-			{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-		},
-		dependencies = {
-			{ "kkharji/sqlite.lua", module = "sqlite" },
-			-- you'll need at least one of these
-			{ "nvim-telescope/telescope.nvim" },
-			-- {'ibhagwan/fzf-lua'},
-		},
-		config = function()
-			require("neoclip").setup({
-				enable_persistent_history = true,
-			})
-		end,
-	},
+	-- {
+	-- 	"AckslD/nvim-neoclip.lua",
+	-- 	lazy = true,
+	-- 	keys = {
+	-- 		{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+	-- 	},
+	-- 	dependencies = {
+	-- 		{ "kkharji/sqlite.lua", module = "sqlite" },
+	-- 		-- you'll need at least one of these
+	-- 		{ "nvim-telescope/telescope.nvim" },
+	-- 		-- {'ibhagwan/fzf-lua'},
+	-- 	},
+	-- 	config = function()
+	-- 		require("neoclip").setup({
+	-- 			enable_persistent_history = true,
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -94,4 +94,19 @@ return {
 	-- 		})
 	-- 	end,
 	-- },
+	{
+		"folke/snacks.nvim",
+		---@type snacks.Config
+		opts = {
+			notifier = {
+				timeout = 1000, -- default timeout in ms
+				width = { min = 40, max = 0.4 },
+				height = { min = 1, max = 0.6 },
+				-- editor margin to keep free. tabline and statusline are taken into account automatically
+				margin = { top = 0, right = 1, bottom = 0 },
+				padding = true, -- add 1 cell of left/right padding to the notification window
+				sort = { "level", "added" }, -- sort by level and time
+			},
+		},
+	},
 }

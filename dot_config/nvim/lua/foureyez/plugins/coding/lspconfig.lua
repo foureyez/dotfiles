@@ -25,7 +25,7 @@ return {
 			lspconfig[server].setup(config)
 		end
 
-		local opts = { noremap = true, silent = true }
+		opts = { noremap = true, silent = true }
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 			opts.desc = "Show LSP references"
@@ -66,15 +66,6 @@ return {
 
 			opts.desc = "Restart LSP"
 			vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-			if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
-				local semantic = client.config.capabilities.textDocument.semanticTokens
-				client.server_capabilities.semanticTokensProvider = {
-					full = true,
-					legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
-					range = true,
-				}
-			end
 		end
 
 		-- Configure LSP for rust
@@ -98,41 +89,41 @@ return {
 		lspconfig.gopls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
-			settings = {
-				gopls = {
-					gofumpt = true,
-					codelenses = {
-						gc_details = false,
-						generate = true,
-						regenerate_cgo = true,
-						-- run_govulncheck = true,
-						test = true,
-						tidy = true,
-						upgrade_dependency = true,
-						vendor = true,
-					},
-					hints = {
-						assignVariableTypes = true,
-						compositeLiteralFields = true,
-						compositeLiteralTypes = true,
-						constantValues = true,
-						functionTypeParameters = true,
-						parameterNames = true,
-						rangeVariableTypes = true,
-					},
-					analyses = {
-						fieldalignment = true,
-						nilness = true,
-						shadow = true,
-						unusedparams = true,
-						unusedwrite = true,
-						useany = true,
-						fillstruct = true,
-					},
-					staticcheck = true,
-					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-					semanticTokens = true,
-				},
+			-- settings = {
+			gopls = {
+				-- 	gofumpt = true,
+				-- 	codelenses = {
+				-- 		gc_details = false,
+				-- 		generate = true,
+				-- 		regenerate_cgo = true,
+				-- 		-- run_govulncheck = true,
+				-- 		test = true,
+				-- 		tidy = true,
+				-- 		upgrade_dependency = true,
+				-- 		vendor = true,
+				-- 	},
+				-- 	hints = {
+				-- 		assignVariableTypes = true,
+				-- 		compositeLiteralFields = true,
+				-- 		compositeLiteralTypes = true,
+				-- 		constantValues = true,
+				-- 		functionTypeParameters = true,
+				-- 		parameterNames = true,
+				-- 		rangeVariableTypes = true,
+				-- 	},
+				-- 	analyses = {
+				-- 		fieldalignment = true,
+				-- 		nilness = true,
+				-- 		shadow = true,
+				-- 		unusedparams = true,
+				-- 		unusedwrite = true,
+				-- 		useany = true,
+				-- 		fillstruct = true,
+				-- 	},
+				-- 	staticcheck = true,
+				-- 	directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+				-- 	semanticTokens = true,
+				-- },
 			},
 			init_options = {
 				usePlaceholders = true,

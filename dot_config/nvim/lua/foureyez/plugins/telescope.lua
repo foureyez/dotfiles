@@ -6,8 +6,10 @@ return {
 	},
 	config = function()
 		local telescope = require("telescope")
-		-- telescope.load_extension("dap")
-		-- telescope.load_extension("file_browser")
+		local project_actions = require("telescope._extensions.project.actions")
+
+		telescope.load_extension("dap")
+		telescope.load_extension("project")
 
 		telescope.setup({
 			pickers = {
@@ -26,33 +28,30 @@ return {
 					previewer = false,
 				},
 				find_files = {
+					theme = "dropdown",
 					previewer = false,
 					layout_config = {
 						prompt_position = "top",
 						width = 0.4,
 					},
 					sorting_strategy = "ascending",
-					theme = "dropdown",
 				},
 			},
-			extensions_list = { "project" },
 			extensions = {
 				project = {
 					theme = "dropdown",
 					hidden_files = true,
-					order_by = "asc",
-					sync_with_nvim_tree = true, -- default false
+					sync_with_nvim_tree = true,
 					search_by = "title",
 					on_project_selected = function(prompt_bufnr)
-						local project_actions = require("telescope._extensions.project.actions")
 						project_actions.change_working_directory(prompt_bufnr, false)
-						require("telescope.builtin").find_files()
+						project_actions.find_project_files()
 					end,
 				},
 				file_browser = {
 					-- theme = "ivy",
 					-- disables netrw and use telescope-file-browser in its place
-					-- hijack_netrw = true,
+					hijack_netrw = true,
 					initial_mode = "normal",
 					picker = {
 						depth = 1,
@@ -72,9 +71,7 @@ return {
 		wk.add({
 			{
 				"<leader>;",
-				function()
-					telescope.extensions.project.project({})
-				end,
+				"<cmd>Telescope project theme=dropdown<CR>",
 				desc = "Switch Project",
 			},
 			{
