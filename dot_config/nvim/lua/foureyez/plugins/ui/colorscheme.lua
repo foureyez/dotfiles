@@ -56,6 +56,13 @@ return {
 	{ "scottmckendry/cyberdream.nvim", priority = 1000 },
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{
+		"sainnhe/gruvbox-material",
+		name = "gruvbox",
+		config = function()
+			vim.g.gruvbox_material_enable_italic = true
+		end,
+	},
+	{
 		"rebelot/kanagawa.nvim",
 		lazy = false,
 		priority = 1000,

@@ -8,6 +8,11 @@ return {
 		end,
 	},
 	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {}, -- this is equalent to setup({}) function
+	},
+	{
 		"kylechui/nvim-surround",
 		-- version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = { "BufReadPre", "BufNewFile" },
@@ -44,13 +49,4 @@ return {
 	-- 		require("lsp_lines").setup()
 	-- 	end,
 	-- },
-	{
-		"monkoose/DoNe",
-		lazy = true,
-		-- optional configuration
-		config = function()
-			-- as example adding some keybindings
-			--- ...
-		end,
-	},
 }
