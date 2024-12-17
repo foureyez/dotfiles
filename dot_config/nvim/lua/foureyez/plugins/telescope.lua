@@ -8,7 +8,7 @@ return {
 		local telescope = require("telescope")
 		local project_actions = require("telescope._extensions.project.actions")
 
-		telescope.load_extension("dap")
+		-- telescope.load_extension("dap")
 		telescope.load_extension("project")
 
 		telescope.setup({
@@ -75,17 +75,16 @@ return {
 				desc = "Switch Project",
 			},
 			{
-				"<leader>dl",
+				"<leader>bl",
 				function()
 					telescope.extensions.dap.list_breakpoints({})
 				end,
 				desc = "List all debug endpoints",
 			},
-			{ "<leader>f", group = "file" },
-			{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-			{ "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", desc = "Open Buffers" },
-			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-			{ "<leader>fc", "<cmd>Telescope neoclip plus<CR>", desc = "Find Clipboard" },
+			{ "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+			-- { "<leader>b", "<cmd>Telescope buffers theme=dropdown<CR>", desc = "Open Buffers" },
+			{ "<leader>f", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+			{ "<leader>c", "<cmd>Telescope neoclip plus<CR>", desc = "Find Clipboard" },
 		})
 
 		-- if vim.v.argv[3] == nil then
