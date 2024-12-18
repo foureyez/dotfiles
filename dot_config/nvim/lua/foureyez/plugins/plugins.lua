@@ -22,20 +22,6 @@ return {
 		end,
 	},
 	{
-		{
-			"stevearc/oil.nvim",
-			lazy = true,
-			cmd = "Oil",
-			opts = {
-				view_options = {
-					show_hidden = true,
-				},
-			},
-			-- Optional dependencies
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-		},
-	},
-	{
 		-- "folke/zen-mode.nvim",
 		-- opts = {
 		--   -- your configuration comes here
