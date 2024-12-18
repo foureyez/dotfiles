@@ -5,12 +5,6 @@ source $ZSH/oh-my-zsh.sh
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-## Node version manager setup
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -25,7 +19,7 @@ export VK_ADD_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
 
 export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
 
-# Setup PATH
+# START env variables
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
@@ -37,15 +31,27 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH=$VULKAN_SDK/bin:$PATH
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# END env variables 
 
-# NNN Variables
-# export NNN_PLUG="f:fzopen;d:diffs;c:fzcd;a:autojump;r:gitroot"
-# NNN Variables end
 
-eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
+# START FZF Configuration
 
-#Setup Aliases
+bindkey "ç" fzf-cd-widget # For mac alt+c support
+bindkey "¸" fzf-cd-widget # For mac alt+c support
+
+export FZF_DEFAULT_OPTS='
+  --color=spinner:#fb4934,hl:#928374,fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934
+  --height 60%
+  --border top'
+
+export FZF_CTRL_R_OPTS=""
+export FZF_CTRL_T_OPTS=""
+export FZF_ALT_C_OPTS=""
+
+# END FZF Configuration
+
+# START Setup Aliases
+
 alias ls="ls -ltr"
 alias vim=nvim
 alias cd=z # Use zoxide instead of cd
@@ -54,10 +60,14 @@ alias kubectl=k
 alias lg=lazygit
 alias k=kubectl
 alias zshrc="source ~/.zshrc"
+
+# END Setup Aliases
+
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)
 
-# Setup pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"

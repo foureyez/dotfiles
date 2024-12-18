@@ -3,8 +3,8 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	lazy = true,
-	cmd = "NvimTreeToggle",
+	-- lazy = true,
+	-- cmd = "NvimTreeToggle",
 	config = function()
 		require("nvim-tree").setup({
 			sort_by = "case_sensitive",
@@ -52,7 +52,7 @@ return {
 				ignore = false,
 			},
 			sync_root_with_cwd = true,
-			respect_buf_cwd = true,
+			-- respect_buf_cwd = true,
 			update_focused_file = {
 				enable = true,
 				-- update_root = true,
@@ -62,8 +62,8 @@ return {
 		-- SETUP KEYMAPS
 		local wk = require("which-key")
 		wk.add({
-			{ "<C-n>", "<CMD>NvimTreeToggle<CR>", desc = "Toggle nvimtree" },
-			{ "<leader>e", "<CMD>NvimTreeFocus<CR>", desc = "Focus Nvimtree" },
+			-- { "<C-n>", "<CMD>NvimTreeToggle<CR>", desc = "Toggle nvimtree" },
+			{ "<leader>e", "<CMD>NvimTreeToggle<CR>", desc = "Focus Nvimtree" },
 		})
 	end,
 }

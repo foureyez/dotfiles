@@ -16,7 +16,7 @@ return {
 		local wk = require("which-key")
 		wk.add({
 			{
-				"<leader>gg",
+				"<leader>l",
 				function()
 					Terminal:new({
 						cmd = "lazygit",
@@ -28,7 +28,7 @@ return {
 				desc = "Open LazyGit",
 			},
 			{
-				"<leader>gl",
+				"<leader>g",
 				function()
 					Terminal:new({
 						cmd = "gitui",
