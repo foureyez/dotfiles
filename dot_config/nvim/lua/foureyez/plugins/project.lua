@@ -15,6 +15,12 @@ return {
 		},
 		picker = {
 			type = "fzf-lua",
+			opts = {
+				winopts = {
+					width = 0.4,
+					height = 0.5,
+				},
+			},
 		},
 	},
 	init = function()

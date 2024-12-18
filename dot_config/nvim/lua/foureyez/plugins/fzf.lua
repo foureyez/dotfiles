@@ -11,7 +11,7 @@ return {
 			{ "<leader>bl", "<cmd>FzfLua dap_breakpoints<CR>", desc = "List all debug endpoints" },
 			{ "<leader>/", "<cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
 			{ "<leader>dl", "<cmd>FzfLua diagnostics_workspace<CR>", desc = "List all workspace diagnostics" },
-			{ "<leader>f", "<cmd>FzfLua files<CR>", desc = "Find Files" },
+			{ "<leader>f", "<cmd>FzfLua files winopts.width=0.5 winopts.preview.hidden=yes<CR>", desc = "Find Files" },
 		})
 	end,
 }
