@@ -14,16 +14,25 @@ return {
 				prefix = "●",
 			},
 		},
+		-- Global capabilities
+		capabilities = {
+			workspace = {
+				fileOperations = {
+					didRename = true,
+					willRename = true,
+				},
+			},
+		},
 	},
 	config = function(_, opts)
-		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		-- local capabilities = cmp_nvim_lsp.default_capabilities()
-		local capabilities = {}
 		local lspconfig = require("lspconfig")
-		for server, config in pairs(opts.servers or {}) do
-			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-			lspconfig[server].setup(config)
-		end
+		local capabilities = vim.tbl_deep_extend(
+			"force",
+			{},
+			vim.lsp.protocol.make_client_capabilities(),
+			require("blink.cmp").get_lsp_capabilities(opts.capabilities),
+			opts.capabilities or {}
+		)
 
 		opts = { noremap = true, silent = true }
 		local on_attach = function(client, bufnr)
@@ -102,45 +111,46 @@ return {
 		lspconfig.gopls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
-			-- settings = {
-			gopls = {
-				gofumpt = true,
-				codelenses = {
-					gc_details = false,
-					generate = true,
-					regenerate_cgo = true,
-					-- run_govulncheck = true,
-					test = true,
-					tidy = true,
-					upgrade_dependency = true,
-					vendor = true,
+			settings = {
+				gopls = {
+					gofumpt = true,
+					codelenses = {
+						gc_details = false,
+						generate = true,
+						regenerate_cgo = true,
+						-- run_govulncheck = true,
+						test = true,
+						tidy = true,
+						upgrade_dependency = true,
+						vendor = true,
+					},
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
+					analyses = {
+						-- fieldalignment = true,
+						nilness = true,
+						shadow = true,
+						unusedparams = true,
+						unusedwrite = true,
+						useany = true,
+						fillstruct = true,
+					},
+					usePlaceholders = true,
+					completeUnimported = true,
+					staticcheck = true,
+					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+					semanticTokens = true,
 				},
-				hints = {
-					assignVariableTypes = true,
-					compositeLiteralFields = true,
-					compositeLiteralTypes = true,
-					constantValues = true,
-					functionTypeParameters = true,
-					parameterNames = true,
-					rangeVariableTypes = true,
+				init_options = {
+					usePlaceholders = true,
 				},
-				analyses = {
-					fieldalignment = true,
-					nilness = true,
-					shadow = true,
-					unusedparams = true,
-					unusedwrite = true,
-					useany = true,
-					fillstruct = true,
-				},
-				usePlaceholders = true,
-				completeUnimported = true,
-				staticcheck = true,
-				directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-				semanticTokens = true,
-			},
-			init_options = {
-				usePlaceholders = true,
 			},
 		})
 
@@ -218,6 +228,7 @@ return {
 			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 		})
 
+		-- Autocmd for tracking and displaying lsp progress as notification
 		local progress = vim.defaulttable()
 		vim.api.nvim_create_autocmd("LspProgress", {
 			callback = function(ev)
@@ -257,6 +268,30 @@ return {
 							or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
 					end,
 				})
+			end,
+		})
+
+		-- Autocmd for resolving go imports on file save
+		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			pattern = "*.go",
+			callback = function()
+				local params = vim.lsp.util.make_range_params()
+				params.context = { only = { "source.organizeImports" } }
+				-- buf_request_sync defaults to a 1000ms timeout. Depending on your
+				-- machine and codebase, you may want longer. Add an additional
+				-- argument after params if you find that you have to write the file
+				-- twice for changes to be saved.
+				-- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+				local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+				for cid, res in pairs(result or {}) do
+					for _, r in pairs(res.result or {}) do
+						if r.edit then
+							local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+							vim.lsp.util.apply_workspace_edit(r.edit, enc)
+						end
+					end
+				end
+				vim.lsp.buf.format({ async = false })
 			end,
 		})
 	end,

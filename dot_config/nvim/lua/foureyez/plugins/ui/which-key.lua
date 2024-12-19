@@ -13,8 +13,13 @@ return {
 	config = function()
 		local wk = require("which-key")
 		wk.add({
-			{ "<leader>n", "<cmd>bnext<cr>", desc = "Buffer Next" },
-			{ "<leader>p", "<cmd>bprevious<cr>", desc = "Buffer Previous" },
+			{
+				"<leader>n",
+				function()
+					vim.o.rnu = not vim.o.rnu
+				end,
+				desc = "Buffer Previous",
+			},
 		})
 	end,
 }

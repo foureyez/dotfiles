@@ -53,5 +53,5 @@ opt.foldlevel = 99
 opt.foldcolumn = "0"
 
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = true,
 })

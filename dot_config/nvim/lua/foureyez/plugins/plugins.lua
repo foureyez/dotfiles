@@ -21,23 +21,7 @@ return {
 			require("grug-far").setup({})
 		end,
 	},
-	{
-		-- "folke/zen-mode.nvim",
-		-- opts = {
-		--   -- your configuration comes here
-		--   -- or leave it empty to use the default settings
-		--   -- refer to the configuration section below
-		-- },
-	},
 	-- For dimming the inactive parts of code
-	{
-		-- "folke/twilight.nvim",
-		-- opts = {
-		--   -- your configuration comes here
-		--   -- or leave it empty to use the default settings
-		--   -- refer to the configuration section below
-		-- },
-	},
 	-- {
 	-- 	"AckslD/nvim-neoclip.lua",
 	-- 	lazy = true,
@@ -82,9 +66,9 @@ return {
 		"folke/snacks.nvim",
 		opts = {
 			notifier = {
-				timeout = 1000, -- default timeout in ms
+				timeout = 5000, -- default timeout in ms
 				width = { min = 40, max = 0.4 },
-				height = { min = 1, max = 0.6 },
+				height = { min = 1, max = 60 },
 				-- editor margin to keep free. tabline and statusline are taken into account automatically
 				margin = { top = 0, right = 1, bottom = 0 },
 				padding = true, -- add 1 cell of left/right padding to the notification window
