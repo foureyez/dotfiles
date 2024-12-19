@@ -42,13 +42,11 @@ return {
 	-- 	"AckslD/nvim-neoclip.lua",
 	-- 	lazy = true,
 	-- 	keys = {
-	-- 		{ "<leader>fa", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+	-- 		{ "<leader>c", "<cmd>Neoclip<CR>", desc = "Live Grep" },
 	-- 	},
 	-- 	dependencies = {
 	-- 		{ "kkharji/sqlite.lua", module = "sqlite" },
-	-- 		-- you'll need at least one of these
-	-- 		{ "nvim-telescope/telescope.nvim" },
-	-- 		-- {'ibhagwan/fzf-lua'},
+	--    {'ibhagwan/fzf-lua'},
 	-- 	},
 	-- 	config = function()
 	-- 		require("neoclip").setup({
