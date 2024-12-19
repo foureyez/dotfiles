@@ -80,7 +80,6 @@ return {
 	-- },
 	{
 		"folke/snacks.nvim",
-		---@type snacks.Config
 		opts = {
 			notifier = {
 				timeout = 1000, -- default timeout in ms

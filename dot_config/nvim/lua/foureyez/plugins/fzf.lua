@@ -4,7 +4,11 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		-- calling `setup` is optional for customization
-		require("fzf-lua").setup({})
+		require("fzf-lua").setup({
+			winopts = {
+				border = "single",
+			},
+		})
 
 		local wk = require("which-key")
 		wk.add({
