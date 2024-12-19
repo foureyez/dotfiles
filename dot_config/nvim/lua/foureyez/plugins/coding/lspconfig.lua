@@ -35,7 +35,7 @@ return {
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 			opts.desc = "Show LSP definitions"
-			vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", opts) -- show lsp definitions
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definitions
 
 			opts.desc = "Show LSP implementations"
 			vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts) -- show lsp implementations
