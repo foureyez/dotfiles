@@ -63,16 +63,5 @@ return {
 				return suffix
 			end,
 		})
-
-		local wk = require("which-key")
-		wk.add({
-			{ "<leader>oc", "<cmd>ObsidianToggleCheckbox<CR>", desc = "Obsidian toggle checkbox" },
-			{ "<leader>on", "<cmd>ObsidianNew<CR>", desc = "Obsidian new note" },
-			{ "<leader>os", "<cmd>ObsidianSearch<CR>", desc = "Obsidian search" },
-			{ "<leader>ot", "<cmd>ObsidianToday<CR>", desc = "Obsidian create todays journal" },
-			{ "<leader>ott", "<cmd>ObsidianTomorrow<CR>", desc = "Obsidian search" },
-			{ "<leader>ow", "<cmd>ObsidianWorkspace<CR>", desc = "Obsidian switch workspace" },
-			{ "<leader>oy", "<cmd>ObsidianYesterday<CR>", desc = "Obsidian search" },
-		})
 	end,
 }

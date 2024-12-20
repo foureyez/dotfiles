@@ -21,7 +21,6 @@ return {
 			require("grug-far").setup({})
 		end,
 	},
-	-- For dimming the inactive parts of code
 	-- {
 	-- 	"AckslD/nvim-neoclip.lua",
 	-- 	lazy = true,
@@ -43,25 +42,8 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("gitsigns").setup()
-
-			local wk = require("which-key")
-			wk.add({
-				{ "<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Git blame current file" },
-				{ "<leader>gbl", "<cmd>Gitsigns blame_line<CR>", desc = "Git blame current file" },
-			})
 		end,
 	},
-	-- {
-	-- 	"sindrets/diffview.nvim",
-	-- 	config = function()
-	-- 		local wk = require("which-key")
-	-- 		wk.add({
-	-- 			{ "<leader>gf", "<cmd>DiffviewFileHistory %<CR>", desc = "Open Git History for current file" },
-	-- 			{ "<leader>gh", "<cmd>DiffviewFileHistory<CR>", desc = "Open git history" },
-	-- 			{ "<leader>gq", "<cmd>DiffviewClose<CR>", desc = "Open git history" },
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"folke/snacks.nvim",
 		opts = {

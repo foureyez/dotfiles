@@ -1,7 +1,10 @@
-local opt = vim.opt -- for conciseness
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+local opt = vim.opt
 
 -- recommended session options from auto-session
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions,globals"
 
 -- Prevent LSP from overwriting treesitter color settings (semantic tokens)
 vim.highlight.priorities.semantic_tokens = 95

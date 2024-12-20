@@ -35,11 +35,4 @@ return {
 			end,
 		},
 	},
-
-	init = function()
-		local wk = require("which-key")
-		wk.add({
-			{ "<leader>e", "<CMD>Oil --float<CR>", desc = "Open Oil" },
-		})
-	end,
 }

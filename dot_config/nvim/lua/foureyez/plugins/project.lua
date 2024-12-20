@@ -23,13 +23,4 @@ return {
 			},
 		},
 	},
-	init = function()
-		-- enable saving the state of plugins in the session
-		vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
-
-		local wk = require("which-key")
-		wk.add({
-			{ "<leader>;", "<cmd>NeovimProjectDiscover<CR>", desc = "Browse Projects" },
-		})
-	end,
 }
