@@ -12,6 +12,7 @@ return {
 		projects = { -- define project roots
 			"~/workspace/*",
 			"~/.local/share/chezmoi",
+			"/usr/lib/odin",
 		},
 		picker = {
 			type = "fzf-lua",
