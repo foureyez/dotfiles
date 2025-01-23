@@ -4,10 +4,11 @@ return {
 		"christoomey/vim-tmux-navigator",
 	},
 	{
-		event = { "BufReadPre", "BufNewFile" },
-		ft = { "md" },
 		"MeanderingProgrammer/markdown.nvim",
 		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+		event = { "BufReadPre *.md" },
+		ft = { "md" },
+		lazy = true,
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("render-markdown").setup({})
@@ -38,11 +39,9 @@ return {
 	-- 	end,
 	-- },
 	{
-		"lewis6991/gitsigns.nvim",
+		"f-person/git-blame.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("gitsigns").setup()
-		end,
+		config = true,
 	},
 	{
 		"folke/snacks.nvim",

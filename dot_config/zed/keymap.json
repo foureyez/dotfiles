@@ -12,14 +12,27 @@
       "ctrl-g": "workspace::ToggleBottomDock",
       "ctrl-r": "task::Spawn",
       "ctrl-w": "pane::CloseActiveItem",
-      "ctrl-n": "workspace::NewFile"
+      "ctrl-n": "workspace::NewFile",
+
+      "cmd-\\": "workspace::ToggleLeftDock",
+      "cmd-b": "workspace::ToggleRightDock",
+      "cmd-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "cmd-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "cmd-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "cmd-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "cmd-shift-h": "pane::ActivatePrevItem",
+      "cmd-shift-l": "pane::ActivateNextItem",
+      "cmd-g": "workspace::ToggleBottomDock",
+      "cmd-r": "task::Spawn",
+      "cmd-w": "pane::CloseActiveItem",
+      "cmd-n": "workspace::NewFile"
     }
   },
   {
     "context": "EmptyPane || Editor && mode == full && VimControl && vim_mode == normal",
     "bindings": {
       "space ;": "projects::OpenRecent",
-      "space f f": "file_finder::Toggle",
+      "space f": "file_finder::Toggle",
       "space e": "project_panel::ToggleFocus",
 
       "g r": "editor::FindAllReferences",
@@ -28,7 +41,7 @@
       "space d k": "editor::GoToPrevDiagnostic",
       "space d j": "editor::GoToDiagnostic",
       "space s": "project_symbols::Toggle",
-      "space f a": "workspace::NewSearch",
+      "space /": "workspace::NewSearch",
       "space d d": "diagnostics::Deploy"
     }
   },
@@ -42,11 +55,13 @@
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "space ;": "projects::OpenRecent",
-      "space f f": "file_finder::Toggle",
+      "space f": "file_finder::Toggle",
       "n": "menu::SelectNext",
       "p": "menu::SelectPrev",
       "ctrl-d": ["workspace::SendKeystrokes", "n n n n n"], // Scroll down 5 times
       "ctrl-u": ["workspace::SendKeystrokes", "p p p p p"], // Scroll up 5 times
+      "cmd-d": ["workspace::SendKeystrokes", "n n n n n"], // Scroll down 5 times
+      "cmd-u": ["workspace::SendKeystrokes", "p p p p p"], // Scroll up 5 times
       "q": "project_panel::Open",
       "o": ["workspace::SendKeystrokes", "q ctrl-\\"], // Open the file, Close the project_panel
       "a": "project_panel::NewFile",
@@ -61,7 +76,9 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-n": "workspace::NewTerminal",
-      "ctrl-f": "workspace::ToggleZoom"
+      "ctrl-f": "workspace::ToggleZoom",
+      "cmd-n": "workspace::NewTerminal",
+      "cmd-f": "workspace::ToggleZoom"
     }
   },
   {

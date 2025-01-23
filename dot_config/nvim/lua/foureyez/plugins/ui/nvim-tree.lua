@@ -23,7 +23,7 @@ return {
 				enable = true,
 				show_on_dirs = true,
 				show_on_open_dirs = true,
-				debounce_delay = 50,
+				debounce_delay = 100,
 				severity = {
 					-- min = vim.diagnostic.severity.HINT,
 					-- max = vim.diagnostic.severity.ERROR,

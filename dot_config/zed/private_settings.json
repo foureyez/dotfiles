@@ -8,7 +8,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Ayu Mirage"
+    "dark": "Gruvbox Dark Hard"
   },
   "vim_mode": true,
   // 1. Never automatically save:

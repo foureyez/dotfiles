@@ -2,20 +2,25 @@ return {
 	"mfussenegger/nvim-dap",
 	lazy = true,
 	cmd = "DapContinue",
+	dependencies = {
+		{ "igorlfs/nvim-dap-view", opts = {} },
+	},
 	config = function()
 		-- Automatically open/close dapui when debugger is active/inactive
-		local dap, dapui = require("dap"), require("dapui")
+		local dap = require("dap")
+		-- local dapui = require("dapui")
+		local dapview = require("dap-view")
 		dap.listeners.before.attach.dapui_config = function()
-			dapui.open()
+			dapview.open()
 		end
 		dap.listeners.before.launch.dapui_config = function()
-			dapui.open()
+			dapview.open()
 		end
 		dap.listeners.before.event_terminated.dapui_config = function()
-			dapui.close()
+			dapview.close()
 		end
 		dap.listeners.before.event_exited.dapui_config = function()
-			dapui.close()
+			dapview.close()
 		end
 
 		dap.adapters.gdb = {
@@ -61,7 +66,7 @@ return {
 		}
 		dap.configurations.odin = dap.configurations.c
 
-		vim.api.nvim_create_user_command("DapUIClose", dapui.close, {})
-		vim.api.nvim_create_user_command("DapUIOpen", dapui.open, {})
+		-- vim.api.nvim_create_user_command("DapUIClose", dapui.close, {})
+		-- vim.api.nvim_create_user_command("DapUIOpen", dapui.open, {})
 	end,
 }

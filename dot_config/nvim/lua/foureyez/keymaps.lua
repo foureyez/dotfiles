@@ -30,14 +30,14 @@ map.set("n", "<leader>;", "<cmd>NeovimProjectDiscover<CR>", defaults)
 map.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", defaults)
 map.set("n", "<leader>w", "<cmd>Oil --float<CR>", defaults)
 
-map.set("n", "<leader>bl", "<cmd>FzfLua dap_breakpoints<CR>", defaults)
+map.set("n", "<leader>db", "<cmd>FzfLua dap_breakpoints<CR>", defaults)
 map.set("n", "<leader>/", "<cmd>FzfLua live_grep<CR>", defaults)
 map.set("n", "<leader>f", "<cmd>FzfLua files winopts.width=0.5 winopts.preview.hidden=yes<CR>", defaults)
 map.set("n", "<leader>dl", "<cmd>FzfLua diagnostics_workspace<CR>", defaults)
 
 -- Debugging Keymaps
-map.set("n", "<leader>b", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", defaults)
-map.set("n", "<leader>bc", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", defaults)
+map.set("n", "<leader>b", "<cmd>PBToggleBreakpoint<cr>", defaults)
+map.set("n", "<leader>dbc", "<cmd>PBClearAllBreakpoints<cr>", defaults)
 map.set("n", "<F3>", function()
 	require("dap").step_over()
 end, defaults)
@@ -50,10 +50,6 @@ end, defaults)
 map.set("n", "<F5>", function()
 	require("dap").continue()
 end, defaults)
-
--- Git Keymaps
-map.set("n", "<leader>gb", "<cmd>Gitsigns blame<cr>", defaults)
-map.set("n", "<leader>gbl", "<cmd>Gitsigns blame_line<cr>", defaults)
 
 -- Obsidian Keymaps
 map.set("n", "<leader>oc", "<cmd>ObsidianToggleCheckbox<CR>", defaults)
