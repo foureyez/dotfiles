@@ -41,7 +41,11 @@ return {
 	{
 		"f-person/git-blame.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		config = true,
+		config = function()
+			require("gitblame").setup({
+				enabled = false,
+			})
+		end,
 	},
 	{
 		"folke/snacks.nvim",
