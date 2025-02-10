@@ -41,6 +41,29 @@ return {
 		name = "gruvbox",
 		config = function()
 			vim.g.gruvbox_material_enable_italic = true
+			vim.g.gruvbox_material_background = "hard"
+			vim.g.gruvbox_material_show_eob = 0
+
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				group = vim.api.nvim_create_augroup("custom_highlights_gruvboxmaterial", {}),
+				pattern = "gruvbox-material",
+				callback = function()
+					local config = vim.fn["gruvbox_material#get_configuration"]()
+					local palette = vim.fn["gruvbox_material#get_palette"](
+						config.background,
+						config.foreground,
+						config.colors_override
+					)
+					local set_hl = vim.fn["gruvbox_material#highlight"]
+
+					set_hl("VertSplit", palette.bg_dim, palette.bg_dim)
+					-- Change indentline colors
+					set_hl("IblIndent", palette.bg3, palette.none)
+					set_hl("NvimTreeIndentMarker", palette.bg3, palette.none)
+					-- Highlight Root Folder name at top of NvimFileTree
+					set_hl("NvimTreeRootFolder", palette.bg3, palette.red)
+				end,
+			})
 		end,
 	},
 	-- {
