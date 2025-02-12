@@ -29,6 +29,7 @@ export PATH=$HOME/ssh-keys:$PATH
 export PATH=/opt/nvim/bin:$PATH
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH=$VULKAN_SDK/bin:$PATH
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # END env variables
@@ -85,3 +86,4 @@ if [ -f '/Users/arawat/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/arawat/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/arawat/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
