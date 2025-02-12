@@ -10,7 +10,7 @@ return {
 			sort_by = "case_sensitive",
 			view = {
 				-- side = "right",
-				width = 35,
+				width = 40,
 				centralize_selection = true,
 			},
 			renderer = {
@@ -23,7 +23,7 @@ return {
 				enable = true,
 				show_on_dirs = true,
 				show_on_open_dirs = true,
-				debounce_delay = 100,
+				debounce_delay = 200,
 				severity = {
 					-- min = vim.diagnostic.severity.HINT,
 					-- max = vim.diagnostic.severity.ERROR,

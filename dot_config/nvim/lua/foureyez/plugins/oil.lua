@@ -7,6 +7,12 @@ return {
 		view_options = {
 			show_hidden = true,
 		},
+		columns = {
+			"icon",
+			"permissions",
+			"size",
+			"mtime",
+		},
 		keymaps = {
 			["g?"] = { "actions.show_help", mode = "n" },
 			["<CR>"] = "actions.select",
@@ -19,7 +25,7 @@ return {
 			["g\\"] = { "actions.toggle_trash", mode = "n" },
 		},
 		float = {
-			padding = 2,
+			-- padding = 2,
 			max_width = 150,
 			max_height = 100,
 			-- border = "rounded",

@@ -63,6 +63,8 @@ return {
 					-- Highlight Root Folder name at top of NvimFileTree
 					set_hl("NvimTreeRootFolder", palette.bg3, palette.red)
 					set_hl("FzfLuaBorder", palette.bg3, palette.none)
+					set_hl("NormalFloat", palette.none, palette.none)
+					set_hl("FloatBorder", palette.bg3, palette.none)
 				end,
 			})
 		end,
