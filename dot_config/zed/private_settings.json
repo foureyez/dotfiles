@@ -7,7 +7,7 @@
   "buffer_font_features": {},
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "Gruvbox Dark Hard",
     "dark": "Gruvbox Dark Hard"
   },
   "vim_mode": true,

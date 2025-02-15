@@ -59,3 +59,12 @@ map.set("n", "<leader>ot", "<cmd>ObsidianToday<CR>", defaults)
 map.set("n", "<leader>ott", "<cmd>ObsidianTomorrow<CR>", defaults)
 map.set("n", "<leader>ow", "<cmd>ObsidianWorkspace<CR>", defaults)
 map.set("n", "<leader>oy", "<cmd>ObsidianYesterday<CR>", defaults)
+
+map.set("n", "<leader>a", function()
+	require("aerial").snacks_picker({
+		layout = {
+			preset = "dropdown",
+			preview = false,
+		},
+	})
+end, defaults)

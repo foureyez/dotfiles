@@ -28,8 +28,6 @@ output * bg ~/wallpapers/TokyoStreet/TokyoStreet-2.png fill
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 output DP-1 mode 2560x1440@240Hz scale 1.25
-default_border none
-gaps outer 5
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -42,6 +40,14 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 000000'
 exec albert --platform wayland
 
+# swaymsg 'workspace 1'
+# toolwait 'kitty'
+# swaymsg 'workspace 2'
+# toolwait 'discord'
+# swaymsg 'workspace 3'
+# toolwait 'zen'
+# swaymsg 'workspace 4'
+# toolwait 'obsidian'
 
 ### Input configuration
 #
@@ -206,12 +212,18 @@ mode "resize" {
     bindsym Print exec grim
 
 font pango:CaskaydiaMono Nerd Font 11
-client.focused          #859900 #859900 #fdf6e3 #859900
-client.focused_inactive #222222 #5f676a #ffffff #484e50   #282a36
-client.unfocused        #222222 #222222 #888888 #292d2e   #282a36
-client.urgent           #222222 #900000 #ffffff #900000   #282a36
-client.placeholder      #222222 #0c0c0c #ffffff #000000   #282a36 
+client.focused          #212b2b #212b2b #fdf6e3 #212b2b #282a36
+client.focused_inactive #222222 #5f676a #ffffff #484e50 #282a36
+client.unfocused        #222222 #222222 #888888 #292d2e #282a36
+client.urgent           #222222 #900000 #ffffff #900000 #282a36
+client.placeholder      #222222 #0c0c0c #ffffff #000000 #282a36 
 title_align center 
+
+
+# default_border none
+default_border pixel 2
+# gaps outer 5
+hide_edge_borders smart
 
 #
 # Status Bar:
@@ -226,7 +238,7 @@ bar {
 
     colors {
         statusline #ffffff
-        background #222222
+        background #111111
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
