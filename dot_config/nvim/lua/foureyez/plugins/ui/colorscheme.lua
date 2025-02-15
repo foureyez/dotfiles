@@ -44,6 +44,10 @@ return {
 			vim.g.gruvbox_material_background = "hard"
 			vim.g.gruvbox_material_show_eob = 0
 
+			-- vim.api.nvim_set_hl(0, 'YellowCursor', { fg='#FFCC00', bg=None })
+			-- vim.api.nvim_set_hl(0, 'YellowBack', { bg="#4C4C19" })
+			-- vim.fn.sign_define('DapStopped', { text='', texthl='YellowCursor', linehl='YellowBack', numhl=''})
+
 			vim.api.nvim_create_autocmd("ColorScheme", {
 				group = vim.api.nvim_create_augroup("custom_highlights_gruvboxmaterial", {}),
 				pattern = "gruvbox-material",
