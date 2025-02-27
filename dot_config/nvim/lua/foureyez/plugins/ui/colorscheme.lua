@@ -69,6 +69,8 @@ return {
 					set_hl("FzfLuaBorder", palette.bg3, palette.none)
 					set_hl("NormalFloat", palette.none, palette.none)
 					set_hl("FloatBorder", palette.bg3, palette.none)
+					-- BlinkCmp virtual text color
+					set_hl("BlinkCmpGhostText", palette.bg5, palette.none)
 				end,
 			})
 		end,

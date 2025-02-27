@@ -26,8 +26,31 @@ return {
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
+
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+
 			-- experimental signature help support
-			signature = { enabled = true },
+			signature = {
+				enabled = true,
+				window = {
+					show_documentation = false,
+				},
+			},
+
+			completion = {
+				ghost_text = {
+					enabled = true,
+					show_with_menu = true,
+				},
+			},
+			cmdline = {
+				enabled = true,
+				completion = {
+					menu = {
+						auto_show = true,
+					},
+				},
+			},
 		},
 		opts_extend = { "sources.default" },
 	},
