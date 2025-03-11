@@ -3,11 +3,11 @@
     "bindings": {
       "ctrl-\\": "workspace::ToggleLeftDock",
       "ctrl-b": "workspace::ToggleRightDock",
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-shift-h": "pane::ActivatePrevItem",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-shift-h": "pane::ActivatePreviousItem",
       "ctrl-shift-l": "pane::ActivateNextItem",
       "ctrl-g": "workspace::ToggleBottomDock",
       "ctrl-r": "task::Spawn",
@@ -16,11 +16,11 @@
 
       "cmd-\\": "workspace::ToggleLeftDock",
       "cmd-b": "workspace::ToggleRightDock",
-      "cmd-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "cmd-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "cmd-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "cmd-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "cmd-shift-h": "pane::ActivatePrevItem",
+      "cmd-h": "workspace::ActivatePaneLeft",
+      "cmd-l": "workspace::ActivatePaneRight",
+      "cmd-j": "workspace::ActivatePaneDown",
+      "cmd-k": "workspace::ActivatePaneUp",
+      "cmd-shift-h": "pane::ActivatePreviousItem",
       "cmd-shift-l": "pane::ActivateNextItem",
       "cmd-g": "workspace::ToggleBottomDock",
       "cmd-r": "task::Spawn",
@@ -38,7 +38,7 @@
       "g r": "editor::FindAllReferences",
       "g i": "editor::GoToImplementation",
       "r n": "editor::Rename",
-      "space d k": "editor::GoToPrevDiagnostic",
+      "space d k": "editor::GoToPreviousDiagnostic",
       "space d j": "editor::GoToDiagnostic",
       "space s": "project_symbols::Toggle",
       "space /": "workspace::NewSearch",
@@ -48,7 +48,9 @@
   {
     "context": "Editor && mode == full",
     "bindings": {
-      "alt-enter": "editor::OpenExcerpts"
+      "alt-enter": "editor::OpenExcerpts",
+      "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
+      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "] // Scroll up 8 times
     }
   },
   {
@@ -57,11 +59,7 @@
       "space ;": "projects::OpenRecent",
       "space f": "file_finder::Toggle",
       "n": "menu::SelectNext",
-      "p": "menu::SelectPrev",
-      "ctrl-d": ["workspace::SendKeystrokes", "n n n n n"], // Scroll down 5 times
-      "ctrl-u": ["workspace::SendKeystrokes", "p p p p p"], // Scroll up 5 times
-      "cmd-d": ["workspace::SendKeystrokes", "n n n n n"], // Scroll down 5 times
-      "cmd-u": ["workspace::SendKeystrokes", "p p p p p"], // Scroll up 5 times
+      "p": "menu::SelectPrevious",
       "q": "project_panel::Open",
       "o": ["workspace::SendKeystrokes", "q ctrl-\\"], // Open the file, Close the project_panel
       "a": "project_panel::NewFile",
