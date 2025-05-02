@@ -1,8 +1,9 @@
 [
   {
     "bindings": {
-      "ctrl-\\": "workspace::ToggleLeftDock",
       "ctrl-b": "workspace::ToggleRightDock",
+      "space e": "workspace::ToggleLeftDock",
+      "space a": ["workspace::SendKeystrokes", "ctrl-b ctrl-shift-b"],
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-j": "workspace::ActivatePaneDown",
@@ -33,7 +34,6 @@
     "bindings": {
       "space ;": "projects::OpenRecent",
       "space f": "file_finder::Toggle",
-      "space e": "project_panel::ToggleFocus",
 
       "g r": "editor::FindAllReferences",
       "g i": "editor::GoToImplementation",
@@ -60,14 +60,17 @@
       "space f": "file_finder::Toggle",
       "n": "menu::SelectNext",
       "p": "menu::SelectPrevious",
-      "q": "project_panel::Open",
-      "o": ["workspace::SendKeystrokes", "q ctrl-\\"], // Open the file, Close the project_panel
+      "o": "project_panel::Open",
       "a": "project_panel::NewFile",
       "r": "project_panel::Rename",
       "d": "project_panel::Trash",
       "c": "project_panel::Copy",
       "v": "project_panel::Paste",
-      "x": "project_panel::Cut"
+      "x": "project_panel::Cut",
+      "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
+      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+      "ctrl-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
+      "ctrl-u": ["workspace::SendKeystrokes", "k k k k k k k k "] // Scroll up 8 times
     }
   },
   {
