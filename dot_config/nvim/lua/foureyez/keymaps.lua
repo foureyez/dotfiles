@@ -36,19 +36,17 @@ map.set("n", "<leader>f", "<cmd>FzfLua files winopts.width=0.5 winopts.preview.h
 map.set("n", "<leader>dl", "<cmd>FzfLua diagnostics_workspace<CR>", defaults)
 
 -- Debugging Keymaps
+local dap = require("dap")
+map.set("n", "<leader>b", "<cmd>PBToggleBreakpoint<cr>", defaults)
 map.set("n", "<leader>b", "<cmd>PBToggleBreakpoint<cr>", defaults)
 map.set("n", "<leader>dbc", "<cmd>PBClearAllBreakpoints<cr>", defaults)
-map.set("n", "<F3>", function()
-	require("dap").step_over()
-end, defaults)
-map.set("n", "<F2>", function()
-	require("dap").step_into()
-end, defaults)
-map.set("n", "<F4>", function()
-	require("dap").step_out()
-end, defaults)
-map.set("n", "<F5>", function()
-	require("dap").continue()
+map.set("n", "<F3>", dap.step_over, defaults)
+map.set("n", "<F2>", dap.step_into, defaults)
+map.set("n", "<F4>", dap.step_out, defaults)
+map.set("n", "<F5>", dap.continue, defaults)
+map.set("n", "<leader>dc", dap.run_to_cursor, defaults)
+map.set("n", "<leader>?", function()
+	require("dap").eval(nil, { enter = true })
 end, defaults)
 
 -- Obsidian Keymaps

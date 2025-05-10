@@ -191,8 +191,10 @@ return {
 		})
 
 		lspconfig.ols.setup({
+			cmd = { "/Users/arawat/personal_workspace/ols/ols" },
 			on_attach = on_attach,
 			capabilities = capabilities,
+			-- root_dir = { "~/personal_workspace/ols" },
 		})
 
 		lspconfig.glsl_analyzer.setup({

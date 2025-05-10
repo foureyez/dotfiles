@@ -23,6 +23,9 @@ return {
 					"goimports-reviser", --[[ "golines"  ]]
 				},
 				rs = { "rustfmt" },
+				formatters_by_ft = {
+					odin = { "odinfmt" },
+				},
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
@@ -62,6 +65,12 @@ return {
 					-- 			html = "go-template",
 					-- 		},
 					-- 	},
+				},
+				odinfmt = {
+					-- Change where to find the command if it isn't in your path.
+					command = "odinfmt",
+					args = { "-stdin" },
+					stdin = true,
 				},
 			},
 		})
