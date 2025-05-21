@@ -10,7 +10,7 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.highlight.priorities.semantic_tokens = 95
 
 -- line numbers
-opt.relativenumber = true -- show relative line numbers
+opt.relativenumber = false -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
