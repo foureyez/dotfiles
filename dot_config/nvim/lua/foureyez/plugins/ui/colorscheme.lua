@@ -61,6 +61,7 @@ return {
 					local set_hl = vim.fn["gruvbox_material#highlight"]
 
 					set_hl("VertSplit", palette.bg_dim, palette.bg_dim)
+					set_hl("CursorLine", palette.none, palette.bg4)
 					-- Change indentline colors
 					set_hl("IblIndent", palette.bg3, palette.none)
 					set_hl("NvimTreeIndentMarker", palette.bg3, palette.none)
