@@ -7,7 +7,7 @@ local opt = vim.opt
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions,globals"
 
 -- Prevent LSP from overwriting treesitter color settings (semantic tokens)
-vim.highlight.priorities.semantic_tokens = 95
+vim.hl.priorities.semantic_tokens = 95
 
 -- line numbers
 opt.relativenumber = false -- show relative line numbers

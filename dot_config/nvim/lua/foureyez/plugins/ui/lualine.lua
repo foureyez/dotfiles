@@ -16,8 +16,8 @@ return {
 			options = {
 				-- theme = "onedark",
 				-- theme = "kanagawa",
-				-- theme = "gruvbox-material",
-				theme = "ayu",
+				theme = "gruvbox-material",
+				-- theme = "ayu",
 				disabled_filetypes = { "packer", "NvimTree" },
 			},
 			sections = {
@@ -26,19 +26,6 @@ return {
 						"filename",
 						path = 1,
 					},
-				},
-				lualine_y = {
-					function()
-						return require("dap").status()
-					end,
-					icon = { "", color = { fg = "#e7c664" } }, -- nerd icon.
-					cond = function()
-						if not package.loaded.dap then
-							return false
-						end
-						local session = require("dap").session()
-						return session ~= nil
-					end,
 				},
 				lualine_x = {
 					{
@@ -51,6 +38,7 @@ return {
 					{ "fileformat" },
 					{ "filetype" },
 				},
+				lualine_y = {},
 			},
 		})
 	end,
