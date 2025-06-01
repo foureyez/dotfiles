@@ -34,7 +34,7 @@ map.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", defaults)
 -- Mgmt Keymaps
 map.set("n", "<leader>;", "<cmd>NeovimProjectDiscover<CR>", defaults)
 map.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", defaults)
-map.set("n", "<leader>w", "<cmd>Oil --float<CR>", defaults)
+-- map.set("n", "<leader>w", "<cmd>Oil --float<CR>", defaults)
 
 map.set("n", "<leader>db", "<cmd>FzfLua dap_breakpoints<CR>", defaults)
 map.set("n", "<leader>/", "<cmd>FzfLua live_grep<CR>", defaults)
