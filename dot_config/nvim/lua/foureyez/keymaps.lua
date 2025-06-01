@@ -7,6 +7,12 @@ local float_term_opts = {
 	hidden = true,
 }
 
+-- Remove suboptimal keymaps
+pcall(vim.keymap.del, "n", "gra")
+pcall(vim.keymap.del, "n", "gri")
+pcall(vim.keymap.del, "n", "grn")
+pcall(vim.keymap.del, "n", "grr")
+
 -- General keymaps
 map.set("t", "<A-ESC>", "<C-\\><C-n>", defaults) -- To exit out of terminal
 map.set("n", "<C-j>", ":FzfLua files<cr>", defaults)
