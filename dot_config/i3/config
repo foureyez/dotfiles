@@ -71,10 +71,11 @@ bindsym $mod+Shift+semicolon --no-startup-id i3exit lock, mode "default"
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    bindsym $mod+y focus left
+    bindsym $mod+u focus down
+    bindsym $mod+i focus up
+    bindsym $mod+o focus right
+
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
