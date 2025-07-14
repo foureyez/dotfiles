@@ -57,6 +57,7 @@ opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = ""
 opt.foldlevel = 99
 opt.foldcolumn = "0"
+opt.wrap = true
 
 vim.diagnostic.config({
 	virtual_text = true,
