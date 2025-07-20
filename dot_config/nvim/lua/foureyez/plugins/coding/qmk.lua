@@ -10,6 +10,17 @@ return {
 				"_ _ _ x x x _ x x x _ _ _",
 			},
 		}
-		require("qmk").setup(config)
+		local onemoreconfig = {
+			name = "LAYOUT_split_4x6_5",
+			layout = {
+				"x x x x x x _ x x x x x x",
+				"x x x x x x _ x x x x x x",
+				"x x x x x x _ x x x x x x",
+				"x x x x x x _ x x x x x x",
+				"_ _ _ x x x _ x x x _ _ _",
+				"_ _ _ _ x x _ x x _ _ _ _",
+			},
+		}
+		require("qmk").setup(onemoreconfig)
 	end,
 }
