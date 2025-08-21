@@ -16,6 +16,9 @@ return {
 		},
 		picker = {
 			type = "fzf-lua",
+      preview = {
+        enabled = false,
+      },
 			opts = {
 				winopts = {
 					width = 0.4,
