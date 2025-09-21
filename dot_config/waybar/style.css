@@ -29,7 +29,7 @@ window#waybar.hidden {
   /* Use box-shadow instead of border so the text isn't offset */
   padding: 3px 15px;
   margin: 3px 3px;
-  border-radius: 4px;
+  border-radius: 0px;
   background-color: #1e1e2e;
   color: #cdd6f4;
 }
@@ -58,7 +58,7 @@ window#waybar.hidden {
 #network,
 #clock,
 #tray {
-  border-radius: 4px;
+  border-radius: 0px;
   margin: 3px 3px;
   padding: 3px 12px;
   background-color: #1e1e2e;
@@ -74,7 +74,7 @@ window#waybar.hidden {
   padding-left: 7px;
   margin-left: 5px;
   font-size: 15px;
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 0px;
   color: #1793d1;
 }
 

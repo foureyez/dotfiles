@@ -25,7 +25,6 @@ return {
 		},
 	},
 	config = function(_, opts)
-		local lspconfig = require("lspconfig")
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
@@ -91,7 +90,7 @@ return {
 		end
 
 		-- Configure LSP for rust
-		lspconfig.rust_analyzer.setup({
+		vim.lsp.config("rust_analyzer", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -108,7 +107,7 @@ return {
 		})
 
 		-- Configure LSP for golang
-		lspconfig.gopls.setup({
+		vim.lsp.config("gopls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -155,7 +154,7 @@ return {
 		})
 
 		-- Configure LSP for lua
-		lspconfig.lua_ls.setup({
+		vim.lsp.config("lua_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -174,12 +173,12 @@ return {
 			},
 		})
 
-		lspconfig.bashls.setup({
+		vim.lsp.config("bashls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 
-		lspconfig.helm_ls.setup({
+		vim.lsp.config("helm_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -191,50 +190,50 @@ return {
 			},
 		})
 
-		lspconfig.ols.setup({
+		vim.lsp.config("ols", {
 			cmd = { "/home/foureyez/workspace/ols/ols" },
 			on_attach = on_attach,
 			capabilities = capabilities,
 			-- root_dir = { "~/personal_workspace/ols" },
+			-- root_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h"),
 		})
 
-		lspconfig.glsl_analyzer.setup({
+		vim.lsp.config("glsl_analyzer", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 
-		lspconfig.terraformls.setup({
+		vim.lsp.config("terraformls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 
-		lspconfig.svelte.setup({
+		vim.lsp.config("svelte", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 
-		lspconfig.ts_ls.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("package.json"),
-			single_file_support = false,
-		})
-
-		lspconfig.tailwindcss.setup({
+		vim.lsp.config("tailwindcss", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 
-		lspconfig.denols.setup({
+		vim.lsp.config("clangd", {
 			on_attach = on_attach,
 			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 		})
 
-		lspconfig.clangd.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
+		vim.lsp.enable("rust_analyzer")
+		vim.lsp.enable("gopls")
+		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("bashls")
+		vim.lsp.enable("helm_ls")
+		vim.lsp.enable("ols")
+		vim.lsp.enable("glsl_analyzer")
+		vim.lsp.enable("terraformls")
+		vim.lsp.enable("svelte")
+		vim.lsp.enable("tailwindcss")
+		vim.lsp.enable("clangd")
 
 		-- Autocmd for tracking and displaying lsp progress as notification
 		local progress = vim.defaulttable()
