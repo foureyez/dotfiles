@@ -191,7 +191,7 @@ return {
 		})
 
 		vim.lsp.config("ols", {
-			cmd = { "/home/foureyez/workspace/ols/ols" },
+			-- cmd = { "/home/foureyez/workspace/ols/ols" },
 			on_attach = on_attach,
 			capabilities = capabilities,
 			-- root_dir = { "~/personal_workspace/ols" },

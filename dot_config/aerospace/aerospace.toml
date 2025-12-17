@@ -259,3 +259,9 @@ run = "move-node-to-workspace 8"
 [[on-window-detected]]
 if.app-id = 'org.aseprite.Aseprite'
 run = "move-node-to-workspace 8"
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout floating",
+]
