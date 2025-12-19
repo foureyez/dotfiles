@@ -54,6 +54,9 @@ opt.cmdheight = 0 --Hide commnadline
 
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.wo[0][0].foldmethod = 'expr'
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
 opt.foldtext = ""
 opt.foldlevel = 99
 opt.foldcolumn = "0"

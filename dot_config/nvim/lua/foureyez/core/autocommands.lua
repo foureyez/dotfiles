@@ -17,3 +17,10 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	group = aug,
 	pattern = "*",
 })
+
+
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'go', 'yaml', 'helm', 'Makefile' },
+  callback = function() vim.treesitter.start() end,
+})

@@ -5,8 +5,7 @@ return {
 	dependencies = {},
 	config = function()
 		local ts = require("nvim-treesitter")
-    ts.install(
-			 {
+    ts.install{
 				"markdown",
 				"lua",
 				"go",
@@ -20,11 +19,10 @@ return {
 				"json",
 				"typescript",
 				"css",
-				"svelte",
 				"rust",
 				"odin",
 				"glsl",
+        "helm",
 			}
-    )
 	end,
 }
