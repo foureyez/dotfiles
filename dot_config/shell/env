@@ -1,0 +1,22 @@
+# Vulkan 
+export VULKAN_SDK=$HOME/vulkan/1.3.296.0/x86_64
+export LD_LIBRARY_PATH=$VULKAN_SDK/lib
+export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+export VK_ADD_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+
+# QMK
+export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
+
+# PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/softwares/nvim/bin:$PATH
+export PATH=$HOME/ssh-keys:$PATH
+export PATH=/opt/nvim/bin:$PATH
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH=$VULKAN_SDK/bin:$PATH
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+export XDG_CONFIG_HOME="$HOME/.config"
+

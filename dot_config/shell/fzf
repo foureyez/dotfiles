@@ -1,0 +1,14 @@
+bindkey "ç" fzf-cd-widget # For mac alt+c support
+bindkey "¸" fzf-cd-widget # For mac alt+c support
+
+export FZF_DEFAULT_OPTS='
+  --color=spinner:#fb4934,hl:#928374,fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934
+  --height 60%
+  --border top'
+
+export FZF_CTRL_R_OPTS=""
+export FZF_CTRL_T_OPTS=""
+export FZF_ALT_C_OPTS=""
+
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"

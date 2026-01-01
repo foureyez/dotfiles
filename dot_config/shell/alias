@@ -1,0 +1,8 @@
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias vim=nvim
+alias cd=z # Use zoxide instead of cd
+alias kubectl=k
+# alias ls='nnn -de'
+alias lg=lazygit
+alias k=kubectl
+alias rc="source ~/.zshrc"

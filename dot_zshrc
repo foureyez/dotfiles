@@ -1,74 +1,10 @@
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
-
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
-export VULKAN_SDK=$HOME/vulkan/1.3.296.0/x86_64
-export LD_LIBRARY_PATH=$VULKAN_SDK/lib
-export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
-export VK_ADD_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
-
-export QMK_HOME=~/qmk/qmk-keymaps/qmk_firmware
-
-# START env variables
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
-export PATH=/usr/local/go/bin:$PATH
-export PATH=$HOME/softwares/nvim/bin:$PATH
-export PATH=$HOME/ssh-keys:$PATH
-export PATH=/opt/nvim/bin:$PATH
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH=$VULKAN_SDK/bin:$PATH
-export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# END env variables
-
-
-# START FZF Configuration
-
-bindkey "ç" fzf-cd-widget # For mac alt+c support
-bindkey "¸" fzf-cd-widget # For mac alt+c support
-
-export FZF_DEFAULT_OPTS='
-  --color=spinner:#fb4934,hl:#928374,fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934
-  --height 60%
-  --border top'
-
-export FZF_CTRL_R_OPTS=""
-export FZF_CTRL_T_OPTS=""
-export FZF_ALT_C_OPTS=""
-
-# END FZF Configuration
-
-# START Setup Aliases
-
-alias ls="ls -ltr"
-alias vim=nvim
-alias cd=z # Use zoxide instead of cd
-alias kubectl=k
-# alias ls='nnn -de'
-alias lg=lazygit
-alias k=kubectl
-alias rc="source ~/.zshrc"
-
-# END Setup Aliases
+source ~/.config/shell/defaults
+source ~/.config/shell/env
+source ~/.config/shell/fzf
+source ~/.config/shell/alias
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-eval "$(zoxide init zsh)"
-source <(fzf --zsh)
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
