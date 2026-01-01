@@ -1,28 +1,29 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
+  "nvim-treesitter/nvim-treesitter",
+  branch = 'main',
+  build = ":TSUpdate",
   lazy = false,
-	dependencies = {},
-	config = function()
-		local ts = require("nvim-treesitter")
-    ts.install{
-				"markdown",
-				"lua",
-				"go",
-				"gowork",
-				"gomod",
-				"gosum",
-				"bash",
-				"yaml",
-				"toml",
-				"html",
-				"json",
-				"typescript",
-				"css",
-				"rust",
-				"odin",
-				"glsl",
-        "helm",
-			}
-	end,
+  dependencies = {},
+  config = function()
+    local ts = require("nvim-treesitter")
+    ts.install {
+      "markdown",
+      "lua",
+      "go",
+      "gowork",
+      "gomod",
+      "gosum",
+      "bash",
+      "yaml",
+      "toml",
+      "html",
+      "json",
+      "typescript",
+      "css",
+      "rust",
+      "odin",
+      "glsl",
+      "helm",
+    }
+  end,
 }
