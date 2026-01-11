@@ -24,6 +24,7 @@ return {
       "odin",
       "glsl",
       "helm",
+      "xml",
     }
   end,
 }
