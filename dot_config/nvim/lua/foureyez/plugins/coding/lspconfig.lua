@@ -223,6 +223,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("protols", {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
 		vim.lsp.enable("rust_analyzer")
 		vim.lsp.enable("gopls")
 		vim.lsp.enable("lua_ls")
@@ -234,6 +239,7 @@ return {
 		vim.lsp.enable("svelte")
 		vim.lsp.enable("tailwindcss")
 		vim.lsp.enable("clangd")
+		vim.lsp.enable("protols")
 
 		-- Autocmd for tracking and displaying lsp progress as notification
 		local progress = vim.defaulttable()

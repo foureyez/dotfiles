@@ -22,6 +22,7 @@ return {
 					"gofumpt",
 					"goimports-reviser", --[[ "golines"  ]]
 				},
+        -- proto = { "protols" }, --Default formatting not inline with work files, disabling 
 				rs = { "rustfmt" },
 				formatters_by_ft = {
 					odin = { "odinfmt" },
