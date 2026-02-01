@@ -25,6 +25,7 @@ return {
       "glsl",
       "helm",
       "xml",
+      "zsh",
     }
   end,
 }

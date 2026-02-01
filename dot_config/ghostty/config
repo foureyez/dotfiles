@@ -25,7 +25,7 @@ cursor-style-blink = false
 shell-integration-features = no-cursor,ssh-env
 
 # Slowdown mouse scrolling
-mouse-scroll-multiplier = 0.95
+mouse-scroll-multiplier = 2
 
 #
 # # Spacing around the equals sign does not matter.
