@@ -214,6 +214,9 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
@@ -260,8 +263,3 @@ run = "move-node-to-workspace 8"
 if.app-id = 'org.aseprite.Aseprite'
 run = "move-node-to-workspace 8"
 
-[[on-window-detected]]
-if.app-id="com.mitchellh.ghostty"
-run= [
-  "layout floating",
-]
