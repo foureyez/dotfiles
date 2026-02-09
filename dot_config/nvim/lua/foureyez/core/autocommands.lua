@@ -24,3 +24,10 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'go', 'yaml', 'helm', 'Makefile', 'odin', 'xml', 'json' },
   callback = function() vim.treesitter.start() end,
 })
+
+
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'go', 'yaml', 'helm', 'Makefile', 'bash', 'json', 'odin', 'xml' },
+  callback = function() vim.treesitter.start() end,
+})
