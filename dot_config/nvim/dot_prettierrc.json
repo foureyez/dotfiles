@@ -1,6 +1,6 @@
 {
   "plugins": [
-    "/home/foureyez/.local/share/nvim/mason/packages/prettier/node_modules/prettier-plugin-go-template/lib/index.js"
+    "~/.local/share/nvim/mason/packages/prettier/node_modules/prettier-plugin-go-template/lib/index.js"
   ],
   "overrides": [
     {

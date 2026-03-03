@@ -1,6 +1,5 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = 'main',
   build = ":TSUpdate",
   lazy = false,
   dependencies = {},
@@ -13,6 +12,7 @@ return {
       "gowork",
       "gomod",
       "gosum",
+      "gotmpl",
       "bash",
       "yaml",
       "toml",
@@ -26,6 +26,7 @@ return {
       "helm",
       "xml",
       "zsh",
+      "terraform",
     }
   end,
 }

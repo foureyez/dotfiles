@@ -12,6 +12,6 @@ return {
 		"go",
 		"yaml",
 		"json",
-		"rs",
+		"rust",
 	},
 }

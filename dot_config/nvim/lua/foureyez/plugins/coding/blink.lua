@@ -16,9 +16,13 @@ return {
 				nerd_font_variant = "mono",
 			},
 
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
+      sources = {
+        -- default = { "lsp", "path", "snippets", "buffer", "codeium" },
+        default = { "lsp", "path", "snippets", "buffer" },
+        -- providers = {
+        --   codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+        -- },
+      },
 
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 

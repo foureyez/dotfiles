@@ -116,12 +116,16 @@ return {
 						PmenuSbar = { bg = theme.ui.bg_m1 },
 						PmenuThumb = { bg = theme.ui.bg_p2 },
 
-						NvimTreeWinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-					}
-					return overrides
-				end,
-				theme = "wave", -- Load "wave" theme when 'background' option is not set
-			})
-		end,
-	},
+            NvimTreeWinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+          }
+          return overrides
+        end,
+        theme = "wave", -- Load "wave" theme when 'background' option is not set
+      })
+    end,
+  },
+  {
+    "oskarnurm/koda.nvim",
+    lazy = true, -- not active; gruvbox-material is set in lazy.lua
+  }
 }

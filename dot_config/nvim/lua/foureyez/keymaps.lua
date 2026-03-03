@@ -1,7 +1,6 @@
 local defaults = { noremap = true, silent = true }
 local map = vim.keymap
 
-local terminal = require("toggleterm.terminal").Terminal
 local float_term_opts = {
 	direction = "float",
 	hidden = true,
@@ -24,16 +23,17 @@ end, defaults)
 
 -- Terminal keymaps
 map.set("n", "<leader>l", function()
-	terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "lazygit", dir = vim.fn.getcwd() })):toggle()
+  local terminal = require("toggleterm.terminal").Terminal
+  terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "lazygit", dir = vim.fn.getcwd() })):toggle()
 end, defaults)
 map.set("n", "<leader>g", function()
-	terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "gitui", dir = vim.fn.getcwd() })):toggle()
+  local terminal = require("toggleterm.terminal").Terminal
+  terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "gitui", dir = vim.fn.getcwd() })):toggle()
 end, defaults)
 map.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", defaults)
 
 -- Mgmt Keymaps
 map.set("n", "<leader>;", "<cmd>NeovimProjectDiscover<CR>", defaults)
-map.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", defaults)
 -- map.set("n", "<leader>w", "<cmd>Oil --float<CR>", defaults)
 
 map.set("n", "<leader>db", "<cmd>FzfLua dap_breakpoints<CR>", defaults)
@@ -42,15 +42,13 @@ map.set("n", "<leader>f", "<cmd>FzfLua files winopts.width=0.5 winopts.preview.h
 map.set("n", "<leader>dl", "<cmd>FzfLua diagnostics_workspace<CR>", defaults)
 
 -- Debugging Keymaps
-local dap = require("dap")
-map.set("n", "<leader>b", "<cmd>PBToggleBreakpoint<cr>", defaults)
 map.set("n", "<leader>b", "<cmd>PBToggleBreakpoint<cr>", defaults)
 map.set("n", "<leader>dc", "<cmd>PBClearAllBreakpoints<cr>", defaults)
-map.set("n", "<F3>", dap.step_over, defaults)
-map.set("n", "<F2>", dap.step_into, defaults)
-map.set("n", "<F4>", dap.step_out, defaults)
-map.set("n", "<F5>", dap.continue, defaults)
-map.set("n", "<leader>dr", dap.run_to_cursor, defaults)
+map.set("n", "<F3>", function() require("dap").step_over() end, defaults)
+map.set("n", "<F2>", function() require("dap").step_into() end, defaults)
+map.set("n", "<F4>", function() require("dap").step_out() end, defaults)
+map.set("n", "<F5>", function() require("dap").continue() end, defaults)
+map.set("n", "<leader>dr", function() require("dap").run_to_cursor() end, defaults)
 map.set("n", "<leader>?", function()
 	require("dapui").eval(nil, { enter = true })
 end, defaults)

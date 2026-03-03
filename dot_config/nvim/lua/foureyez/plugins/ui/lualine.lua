@@ -4,13 +4,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lazy_status = require("lazy.status")
-		local lint_progress = function()
-			local linters = require("lint").get_running()
-			if #linters == 0 then
-				return "󰦕"
-			end
-			return "󱉶 " .. table.concat(linters, ", ")
-		end
 
 		require("lualine").setup({
 			options = {
@@ -33,7 +26,6 @@ return {
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
 					},
-					{ lint_progress },
 					{ "encoding" },
 					{ "fileformat" },
 					{ "filetype" },

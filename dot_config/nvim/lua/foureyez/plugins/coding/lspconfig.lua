@@ -63,11 +63,11 @@ return {
 			opts.desc = "Show line diagnostics"
 			vim.keymap.set("n", "<leader>dK", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-			opts.desc = "Go to previous diagnostic"
-			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      opts.desc = "Go to previous diagnostic"
+      vim.keymap.set("n", "<leader>dk", function() vim.diagnostic.jump({ count = -1 }) end, opts) -- jump to previous diagnostic in buffer
 
-			opts.desc = "Go to next diagnostic"
-			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      opts.desc = "Go to next diagnostic"
+      vim.keymap.set("n", "<leader>dj", function() vim.diagnostic.jump({ count = 1 }) end, opts) -- jump to next diagnostic in buffer
 
 			opts.desc = "Show documentation for what is under cursor"
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -106,72 +106,71 @@ return {
 			},
 		})
 
-		-- Configure LSP for golang
-		vim.lsp.config("gopls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				gopls = {
-					gofumpt = true,
-					codelenses = {
-						gc_details = false,
-						generate = true,
-						regenerate_cgo = true,
-						-- run_govulncheck = true,
-						test = true,
-						tidy = true,
-						upgrade_dependency = true,
-						vendor = true,
-					},
-					hints = {
-						assignVariableTypes = true,
-						compositeLiteralFields = true,
-						compositeLiteralTypes = true,
-						constantValues = true,
-						functionTypeParameters = true,
-						parameterNames = true,
-						rangeVariableTypes = true,
-					},
-					analyses = {
-						-- fieldalignment = true,
-						nilness = true,
-						shadow = true,
-						unusedparams = true,
-						unusedwrite = true,
-						useany = true,
-						fillstruct = true,
-					},
-					usePlaceholders = true,
-					completeUnimported = true,
-					staticcheck = true,
-					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-					semanticTokens = true,
-				},
-				init_options = {
-					usePlaceholders = true,
-				},
-			},
-		})
+    -- Configure LSP for golang
+    vim.lsp.config("gopls", {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          gofumpt = true,
+          codelenses = {
+            -- gc_details = false,
+            -- generate = true,
+            -- regenerate_cgo = true,
+            -- run_govulncheck = true,
+            test = true,
+            tidy = true,
+            -- upgrade_dependency = true,
+            -- vendor = true,
+          },
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
+          analyses = {
+            -- fieldalignment = true,
+            nilness = true,
+            shadow = true,
+            unusedparams = true,
+            unusedwrite = true,
+            useany = true,
+            fillstruct = true,
+          },
+          usePlaceholders = true,
+          completeUnimported = true,
+          staticcheck = true,
+          directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+          semanticTokens = true,
+        },
+      },
+      init_options = {
+        usePlaceholders = true,
+      },
+    })
 
-		-- Configure LSP for lua
-		vim.lsp.config("lua_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-					personal_workspace,
-				},
-			},
-		})
+    -- Configure LSP for lua
+    vim.lsp.config("lua_ls", {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
+            },
+          },
+        },
+      },
+    })
 
 		vim.lsp.config("bashls", {
 			on_attach = on_attach,
@@ -284,28 +283,31 @@ return {
 			end,
 		})
 
-		-- Autocmd for resolving go imports on file save
-		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-			pattern = "*.go",
-			callback = function()
-				local params = vim.lsp.util.make_range_params()
-				params.context = { only = { "source.organizeImports" } }
-				-- buf_request_sync defaults to a 1000ms timeout. Depending on your
-				-- machine and codebase, you may want longer. Add an additional
-				-- argument after params if you find that you have to write the file
-				-- twice for changes to be saved.
-				-- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-				local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-				for cid, res in pairs(result or {}) do
-					for _, r in pairs(res.result or {}) do
-						if r.edit then
-							local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-							vim.lsp.util.apply_workspace_edit(r.edit, enc)
-						end
-					end
-				end
-				vim.lsp.buf.format({ async = false })
-			end,
-		})
-	end,
+    -- Autocmd for resolving go imports on file save
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      pattern = "*.go",
+      callback = function()
+        local clients = vim.lsp.get_clients({ bufnr = 0, name = "gopls" })
+        if #clients == 0 then return end
+        local client = clients[1]
+        local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+        params.context = { only = { "source.organizeImports" } }
+        -- buf_request_sync defaults to a 1000ms timeout. Depending on your
+        -- machine and codebase, you may want longer. Add an additional
+        -- argument after params if you find that you have to write the file
+        -- twice for changes to be saved.
+        -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+        local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+        for cid, res in pairs(result or {}) do
+          for _, r in pairs(res.result or {}) do
+            if r.edit then
+              local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+              vim.lsp.util.apply_workspace_edit(r.edit, enc)
+            end
+          end
+        end
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end,
 }
