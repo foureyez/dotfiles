@@ -60,46 +60,36 @@ return {
 					)
 					local set_hl = vim.fn["gruvbox_material#highlight"]
 
-					set_hl("VertSplit", palette.bg_dim, palette.bg_dim)
-					set_hl("CursorLine", palette.none, palette.bg4)
-					-- Change indentline colors
-					set_hl("IblIndent", palette.bg3, palette.none)
-					set_hl("NvimTreeIndentMarker", palette.bg3, palette.none)
-					-- Highlight Root Folder name at top of NvimFileTree
-					set_hl("NvimTreeRootFolder", palette.bg3, palette.red)
-					set_hl("FzfLuaBorder", palette.bg3, palette.none)
-					set_hl("NormalFloat", palette.none, palette.none)
-					set_hl("FloatBorder", palette.bg3, palette.none)
-					-- BlinkCmp virtual text color
-					set_hl("BlinkCmpGhostText", palette.bg5, palette.none)
-				end,
-			})
-		end,
-	},
-	{
-		"Shatur/neovim-ayu",
-		config = function()
-			require("ayu").setup({
-				mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-				terminal = true, -- Set to `false` to let terminal manage its own colors.
-				overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-			})
-		end,
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("kanagawa").setup({
-				-- dimInactive = true,
-				compile = true, -- enable compiling the colorscheme
-				overrides = function(colors) -- add/modify highlights
-					local theme = colors.theme
-					local overrides = {
-						NormalFloat = { bg = "none" },
-						FloatBorder = { bg = "none" },
-						FloatTitle = { bg = "none" },
+          set_hl("VertSplit", palette.bg_dim, palette.bg_dim)
+          set_hl("CursorLine", palette.none, palette.bg4)
+          -- Change indentline colors
+          set_hl("IblIndent", palette.bg3, palette.none)
+          set_hl("FzfLuaBorder", palette.bg3, palette.none)
+          set_hl("NormalFloat", palette.none, palette.none)
+          set_hl("FloatBorder", palette.bg3, palette.none)
+          -- BlinkCmp virtual text color
+          set_hl("BlinkCmpGhostText", palette.bg5, palette.none)
+        end,
+      })
+    end,
+  },
+  {
+    "Shatur/neovim-ayu",
+    lazy = true, -- not active; gruvbox-material is set in lazy.lua
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = true, -- not active; gruvbox-material is set in lazy.lua
+    config = function()
+      require("kanagawa").setup({
+        -- dimInactive = true,
+        compile = true,              -- enable compiling the colorscheme
+        overrides = function(colors) -- add/modify highlights
+          local theme = colors.theme
+          local overrides = {
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+            FloatTitle = { bg = "none" },
 
 						-- Save an hlgroup with dark background and dimmed foreground
 						-- so that you can use it where your still want darker windows.

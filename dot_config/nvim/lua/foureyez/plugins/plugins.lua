@@ -6,9 +6,7 @@ return {
 	{
 		"MeanderingProgrammer/markdown.nvim",
 		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-		event = { "BufReadPre *.md" },
 		ft = { "markdown" },
-		lazy = true,
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("render-markdown").setup({})
@@ -40,7 +38,7 @@ return {
 	-- },
 	{
 		"f-person/git-blame.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		cmd = { "GitBlameToggle", "GitBlameEnable", "GitBlameCopySHA" },
 		config = function()
 			require("gitblame").setup({
 				enabled = false,

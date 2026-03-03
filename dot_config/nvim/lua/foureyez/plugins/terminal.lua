@@ -3,7 +3,7 @@ return {
 	version = "*",
 	-- opts = {},
 	-- config = true,
-	event = { "BufReadPre", "BufNewFile" },
+	cmd = "ToggleTerm",
 	config = function()
 		require("toggleterm").setup({
 			highlights = {

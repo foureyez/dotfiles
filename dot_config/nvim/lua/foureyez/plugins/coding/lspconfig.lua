@@ -33,47 +33,50 @@ return {
 			opts.capabilities or {}
 		)
 
-		opts = { noremap = true, silent = true }
-		local on_attach = function(client, bufnr)
-			opts.buffer = bufnr
-			opts.desc = "Show LSP references"
-			vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", opts) -- show definition, references
+    -- Apply diagnostics config from opts
+    vim.diagnostic.config(opts.diagnostics)
 
-			opts.desc = "Go to declaration"
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+    local keymap_opts = { noremap = true, silent = true }
+    local on_attach = function(client, bufnr)
+      keymap_opts.buffer = bufnr
+      keymap_opts.desc = "Show LSP references"
+      vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", keymap_opts)
 
-			opts.desc = "Show LSP definitions"
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definitions
+      keymap_opts.desc = "Go to declaration"
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
 
-			opts.desc = "Show LSP implementations"
-			vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts) -- show lsp implementations
+      keymap_opts.desc = "Show LSP definitions"
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
 
-			opts.desc = "Show LSP type definitions"
-			vim.keymap.set("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", opts) -- show lsp type definitions
+      keymap_opts.desc = "Show LSP implementations"
+      vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", keymap_opts)
 
-			opts.desc = "See available code actions"
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+      keymap_opts.desc = "Show LSP type definitions"
+      vim.keymap.set("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", keymap_opts)
 
-			opts.desc = "Smart rename"
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+      keymap_opts.desc = "See available code actions"
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, keymap_opts)
 
-			opts.desc = "Show buffer diagnostics"
-			vim.keymap.set("n", "<leader>dd", "<cmd>FzfLua diagnostics_document<CR>", opts) -- show  diagnostics for file
+      keymap_opts.desc = "Smart rename"
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
 
-			opts.desc = "Show line diagnostics"
-			vim.keymap.set("n", "<leader>dK", vim.diagnostic.open_float, opts) -- show diagnostics for line
+      keymap_opts.desc = "Show buffer diagnostics"
+      vim.keymap.set("n", "<leader>dd", "<cmd>FzfLua diagnostics_document<CR>", keymap_opts)
 
-      opts.desc = "Go to previous diagnostic"
-      vim.keymap.set("n", "<leader>dk", function() vim.diagnostic.jump({ count = -1 }) end, opts) -- jump to previous diagnostic in buffer
+      keymap_opts.desc = "Show line diagnostics"
+      vim.keymap.set("n", "<leader>dK", vim.diagnostic.open_float, keymap_opts)
 
-      opts.desc = "Go to next diagnostic"
-      vim.keymap.set("n", "<leader>dj", function() vim.diagnostic.jump({ count = 1 }) end, opts) -- jump to next diagnostic in buffer
+      keymap_opts.desc = "Go to previous diagnostic"
+      vim.keymap.set("n", "<leader>dk", function() vim.diagnostic.jump({ count = -1 }) end, keymap_opts)
 
-			opts.desc = "Show documentation for what is under cursor"
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      keymap_opts.desc = "Go to next diagnostic"
+      vim.keymap.set("n", "<leader>dj", function() vim.diagnostic.jump({ count = 1 }) end, keymap_opts)
 
-			opts.desc = "Restart LSP"
-			vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+      keymap_opts.desc = "Show documentation for what is under cursor"
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+
+      keymap_opts.desc = "Restart LSP"
+      vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", keymap_opts)
 
 			-- gopls specific
 			if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then

@@ -1,8 +1,7 @@
 return {
 	{
 		"mason-org/mason.nvim",
-		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		cmd = "Mason",
 		config = function()
 			local mason = require("mason")
 			mason.setup()
