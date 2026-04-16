@@ -8,6 +8,8 @@ return {
 	},
 	config = function()
 		require("aerial").setup({
+			attach_mode = "window",
+			manage_check_interval = 500,
 			-- optionally use on_attach to set keymaps when aerial has attached to a buffer
 			on_attach = function(bufnr)
 				-- Jump forwards/backwards with '{' and '}'

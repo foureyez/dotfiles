@@ -22,7 +22,7 @@ return {
 					"gofumpt",
 					"goimports-reviser", --[[ "golines"  ]]
 				},
-        -- proto = { "protols" }, --Default formatting not inline with work files, disabling 
+				-- proto = { "protols" }, --Default formatting not inline with work files, disabling
 				rust = { "rustfmt" },
 				odin = { "odinfmt" },
 			},

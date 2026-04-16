@@ -12,7 +12,7 @@ pcall(vim.keymap.del, "n", "grn")
 pcall(vim.keymap.del, "n", "grr")
 
 local function opts(desc)
-  return { noremap = true, silent = true, desc = desc }
+	return { noremap = true, silent = true, desc = desc }
 end
 
 -- General keymaps
@@ -21,17 +21,17 @@ map.set("n", "<C-j>", ":FzfLua files<cr>", opts("FzfLua files"))
 map.set("n", "<leader>tt", ":FzfLua files<cr>", opts("FzfLua files"))
 map.set("n", "<C-k>", "kkkkk", opts("Move up 5 lines"))
 map.set("n", "<leader>n", function()
-  vim.o.rnu = not vim.o.rnu
+	vim.o.rnu = not vim.o.rnu
 end, opts("Toggle relative line numbers"))
 
 -- Terminal keymaps
 map.set("n", "<leader>l", function()
-  local terminal = require("toggleterm.terminal").Terminal
-  terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "lazygit", dir = vim.fn.getcwd() })):toggle()
+	local terminal = require("toggleterm.terminal").Terminal
+	terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "lazygit", dir = vim.fn.getcwd() })):toggle()
 end, opts("Open lazygit"))
 map.set("n", "<leader>g", function()
-  local terminal = require("toggleterm.terminal").Terminal
-  terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "gitui", dir = vim.fn.getcwd() })):toggle()
+	local terminal = require("toggleterm.terminal").Terminal
+	terminal:new(vim.tbl_deep_extend("force", float_term_opts, { cmd = "gitui", dir = vim.fn.getcwd() })):toggle()
 end, opts("Open gitui"))
 map.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", opts("Float terminal"))
 
@@ -47,13 +47,23 @@ map.set("n", "<leader>dl", "<cmd>FzfLua diagnostics_workspace<CR>", opts("Worksp
 -- Debugging Keymaps
 map.set("n", "<leader>b", "<cmd>PBToggleBreakpoint<cr>", opts("Toggle breakpoint"))
 map.set("n", "<leader>dc", "<cmd>PBClearAllBreakpoints<cr>", opts("Clear all breakpoints"))
-map.set("n", "<F3>", function() require("dap").step_over() end, opts("DAP step over"))
-map.set("n", "<F2>", function() require("dap").step_into() end, opts("DAP step into"))
-map.set("n", "<F4>", function() require("dap").step_out() end, opts("DAP step out"))
-map.set("n", "<F5>", function() require("dap").continue() end, opts("DAP continue"))
-map.set("n", "<leader>dr", function() require("dap").run_to_cursor() end, opts("DAP run to cursor"))
+map.set("n", "<F3>", function()
+	require("dap").step_over()
+end, opts("DAP step over"))
+map.set("n", "<F2>", function()
+	require("dap").step_into()
+end, opts("DAP step into"))
+map.set("n", "<F4>", function()
+	require("dap").step_out()
+end, opts("DAP step out"))
+map.set("n", "<F5>", function()
+	require("dap").continue()
+end, opts("DAP continue"))
+map.set("n", "<leader>dr", function()
+	require("dap").run_to_cursor()
+end, opts("DAP run to cursor"))
 map.set("n", "<leader>?", function()
-  require("dapui").eval(nil, { enter = true })
+	require("dapui").eval(nil, { enter = true })
 end, opts("DAP eval under cursor"))
 
 -- Obsidian Keymaps
@@ -66,10 +76,10 @@ map.set("n", "<leader>ow", "<cmd>ObsidianWorkspace<CR>", opts("Obsidian workspac
 map.set("n", "<leader>oy", "<cmd>ObsidianYesterday<CR>", opts("Obsidian yesterday"))
 
 map.set("n", "<leader>a", function()
-  require("aerial").snacks_picker({
-    layout = {
-      preset = "dropdown",
-      preview = false,
-    },
-  })
+	require("aerial").snacks_picker({
+		layout = {
+			preset = "dropdown",
+			preview = false,
+		},
+	})
 end, opts("Aerial symbol picker"))
