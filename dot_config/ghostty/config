@@ -19,6 +19,8 @@ confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
 
+# window-decoration = none
+# macos-titlebar-style = hidden
 
 # Cursor styling
 cursor-style = "block"

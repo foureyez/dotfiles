@@ -5,7 +5,7 @@
     // "args": [],
     // "env": { "foo": "bar" },
     //"cwd": "/path/to/working/directory",
-    "use_new_terminal": false,
+    "use_new_terminal": true,
     // Whether to allow multiple instances of the same task to be run, or rather wait for the existing ones to finish, defaults to `false`.
     "allow_concurrent_runs": false,
     // What to do with the terminal pane and tab, after the command was started:
@@ -16,7 +16,8 @@
     // * `never` — Do nothing when the command finishes (default)
     // * `always` — always hide the terminal tab, hide the pane also if it was the last tab in it
     // * `on_success` — hide the terminal tab on task success only, otherwise behaves similar to `always`
-    "hide": "never",
-    "shell": "system"
+    "hide": "always",
+    "shell": "system",
+    "reveal_target": "center"
   }
 ]

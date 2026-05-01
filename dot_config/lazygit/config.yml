@@ -1,31 +1,34 @@
 services:
-  'bitbucket.corp.zscaler.com:7999': 'bitbucketServer:bitbucket.corp.zscaler.com'
+  "bitbucket.corp.zscaler.com:7999": "bitbucketServer:bitbucket.corp.zscaler.com"
+  "gitlab.corp.zscaler.com": "gitlab:gitlab.corp.zscaler.com"
+
+notARepository: "quit"
 
 os:
-  editPreset: 'nvim'
+  editPreset: "nvim"
 
 gui:
   border: single
   theme:
     activeBorderColor:
-      - '#ddd'
+      - "#ddd"
       - bold
     inactiveBorderColor:
-      - '#615d59'
+      - "#615d59"
     optionsTextColor:
-      - '#8aadf4'
+      - "#8aadf4"
     selectedLineBgColor:
-      - '#363a4f'
+      - "#363a4f"
     cherryPickedCommitBgColor:
-      - '#494d64'
+      - "#494d64"
     cherryPickedCommitFgColor:
-      - '#8bd5ca'
+      - "#8bd5ca"
     unstagedChangesColor:
-      - '#ed8796'
+      - "#ed8796"
     defaultFgColor:
-      - '#cad3f5'
+      - "#cad3f5"
     searchingActiveBorderColor:
-      - '#eed49f'
+      - "#eed49f"
 
   authorColors:
-    '*': '#b7bdf8'
+    "*": "#b7bdf8"

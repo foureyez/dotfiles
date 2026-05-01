@@ -34,7 +34,7 @@
 
   // Toggles
   {
-    "context": "ProjectPanel || (Editor && vim_mode != insert)",
+    "context": "ProjectPanel || (Editor && vim_mode == normal)",
     "bindings": {
       "space e": "project_panel::Toggle",
     },
@@ -59,11 +59,12 @@
   {
     "context": "(GitPanel && !Editor) || (GitPanel && Editor && vim_mode == normal)",
     "bindings": {
-      "p": "git::CreatePullRequest",
+      "o": "git::CreatePullRequest",
       // "s": "git::ToggleStaged",
       "c": "git::Commit",
       "b": "git::Branch",
       "s": "git::ViewStash",
+      "p": "git::Pull",
     },
   },
 
@@ -77,7 +78,10 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "o": "project_panel::Open",
+      "enter": [
+        "action::Sequence",
+        ["project_panel::Open", "project_panel::Toggle"],
+      ],
       "a": "project_panel::NewFile",
       "r": "project_panel::Rename",
       "d": "project_panel::Delete",
@@ -110,6 +114,7 @@
       "alt-enter": "editor::OpenExcerpts",
       "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
       "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+      "space l": ["task::Spawn", { "task_name": "lazygit" }],
     },
   },
   {
