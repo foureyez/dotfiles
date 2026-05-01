@@ -1,14 +1,15 @@
 {
+  "icon_theme": "VSCode Icons for Zed (Dark Angular)",
   "ui_font_size": 16,
   "unstable.ui_density": "compact",
-  "buffer_font_size": 14.5,
-  "buffer_line_height": "standard",
+  "buffer_font_size": 13,
+  "buffer_line_height": { "custom": 1.4 },
   "buffer_font_weight": 400,
   "buffer_font_features": {},
   "theme": {
     "mode": "system",
     "light": "Gruvbox Dark Hard",
-    "dark": "Gruvbox Dark Hard"
+    "dark": "Gruvbox Dark Hard",
   },
   "vim_mode": true,
   // 1. Never automatically save:
@@ -21,32 +22,28 @@
   //     "autosave": { "after_delay": {"milliseconds": 500} },
   "autosave": "on_focus_change",
   "vertical_scroll_margin": 15,
-  "buffer_font_family": "Fira Code",
+  "buffer_font_family": "SF Mono Terminal",
   "tab_size": 2,
   "centered_layout": {
     "left_padding": 0.1,
-    "right_padding": 0.1
-  },
-  "features": {
-    "inline_completion_provider": "supermaven"
+    "right_padding": 0.1,
   },
   "telemetry": {
     "metrics": false,
-    "diagnostics": false
+    "diagnostics": false,
   },
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-5-sonnet-latest",
     },
-    "version": "2"
   },
   "auto_update_extensions": {
-    "odin": true
+    "odin": true,
   },
   "tab_bar": {
     "show": true,
-    "show_nav_history_buttons": false
+    "show_nav_history_buttons": false,
   },
   "preview_tabs": {
     // Whether preview tabs should be enabled.
@@ -57,11 +54,11 @@
     // Whether to open tabs in preview mode when selected from the file finder.
     "enable_preview_from_file_finder": true,
     // Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
-    "enable_preview_from_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true,
   },
   "outline_panel": {
     "button": true,
-    "default_width": 300,
+    "default_width": 500.0,
     "dock": "right",
     "file_icons": true,
     "folder_icons": true,
@@ -70,16 +67,23 @@
     "auto_reveal_entries": true,
     "auto_fold_dirs": true,
     "indent_guides": {
-      "show": "always"
+      "show": "always",
     },
     "scrollbar": {
-      "show": "auto"
-    }
+      "show": "auto",
+    },
+  },
+  "project_panel": {
+    // "folder_icons": true,
+    "default_width": 500.0,
+    "dock": "right",
+    "hide_hidden": false,
+  },
+  "git_panel": {
+    "default_width": 500.0,
+    "dock": "right",
   },
   "collaboration_panel": {
-    "button": false
+    "button": false,
   },
-  "chat_panel": {
-    "button": false
-  }
 }

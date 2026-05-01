@@ -1,77 +1,116 @@
 [
+  // Navigation
   {
+    "context": "vim_mode != insert",
     "bindings": {
-      "ctrl-b": "workspace::ToggleRightDock",
-      "space e": "workspace::ToggleLeftDock",
-      "space a": ["workspace::SendKeystrokes", "ctrl-b ctrl-shift-b"],
+      // Panel Navigation
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
+      "cmd-h": "workspace::ActivatePaneLeft",
+      "cmd-l": "workspace::ActivatePaneRight",
+      "cmd-j": "workspace::ActivatePaneDown",
+      "cmd-k": "workspace::ActivatePaneUp",
+      "cmd-g": "workspace::ToggleBottomDock",
+
+      // Tab Navigation
       "ctrl-shift-h": "pane::ActivatePreviousItem",
       "ctrl-shift-l": "pane::ActivateNextItem",
+      "cmd-shift-h": "pane::ActivatePreviousItem",
+      "cmd-shift-l": "pane::ActivateNextItem",
+
+      // Misc
       "ctrl-g": "workspace::ToggleBottomDock",
       "ctrl-r": "task::Spawn",
       "ctrl-w": "pane::CloseActiveItem",
       "ctrl-n": "workspace::NewFile",
 
-      "cmd-\\": "workspace::ToggleLeftDock",
-      "cmd-b": "workspace::ToggleRightDock",
-      "cmd-h": "workspace::ActivatePaneLeft",
-      "cmd-l": "workspace::ActivatePaneRight",
-      "cmd-j": "workspace::ActivatePaneDown",
-      "cmd-k": "workspace::ActivatePaneUp",
-      "cmd-shift-h": "pane::ActivatePreviousItem",
-      "cmd-shift-l": "pane::ActivateNextItem",
-      "cmd-g": "workspace::ToggleBottomDock",
       "cmd-r": "task::Spawn",
       "cmd-w": "pane::CloseActiveItem",
-      "cmd-n": "workspace::NewFile"
-    }
+      "cmd-n": "workspace::NewFile",
+    },
+  },
+
+  // Toggles
+  {
+    "context": "ProjectPanel || (Editor && vim_mode != insert)",
+    "bindings": {
+      "space e": "project_panel::Toggle",
+    },
   },
   {
-    "context": "EmptyPane || Editor && mode == full && VimControl && vim_mode == normal",
+    "context": "(GitPanel && !Editor) || (GitPanel && Editor && vim_mode == normal) || (Editor && vim_mode == normal)",
+    "bindings": {
+      "space l": "git_panel::Toggle",
+    },
+  },
+  // Popups
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space a": "outline::Toggle",
+      "space b": "git::Branch",
+      "space s": "git::ViewStash",
+    },
+  },
+
+  // Panel detail
+  {
+    "context": "(GitPanel && !Editor) || (GitPanel && Editor && vim_mode == normal)",
+    "bindings": {
+      "p": "git::CreatePullRequest",
+      // "s": "git::ToggleStaged",
+      "c": "git::Commit",
+      "b": "git::Branch",
+      "s": "git::ViewStash",
+    },
+  },
+
+  {
+    "context": "GitStash",
+    "bindings": {
+      "d": "git::DropCurrentStash",
+    },
+  },
+
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "o": "project_panel::Open",
+      "a": "project_panel::NewFile",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "x": "project_panel::Cut",
+      "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
+      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+      "ctrl-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
+      "ctrl-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+    },
+  },
+
+  // Global vim config
+  {
+    "context": "EmptyPane || Editor && vim_mode == normal",
     "bindings": {
       "space ;": "projects::OpenRecent",
       "space f": "file_finder::Toggle",
 
+      "cmd-o": "pane::GoBack",
       "g r": "editor::FindAllReferences",
       "g i": "editor::GoToImplementation",
       "r n": "editor::Rename",
       "space d k": "editor::GoToPreviousDiagnostic",
       "space d j": "editor::GoToDiagnostic",
-      "space s": "project_symbols::Toggle",
       "space /": "workspace::NewSearch",
-      "space d d": "diagnostics::Deploy"
-    }
-  },
-  {
-    "context": "Editor && mode == full",
-    "bindings": {
+      "space d d": "diagnostics::Deploy",
+
       "alt-enter": "editor::OpenExcerpts",
       "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
-      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "] // Scroll up 8 times
-    }
-  },
-  {
-    "context": "ProjectPanel && not_editing",
-    "bindings": {
-      "space ;": "projects::OpenRecent",
-      "space f": "file_finder::Toggle",
-      "n": "menu::SelectNext",
-      "p": "menu::SelectPrevious",
-      "o": "project_panel::Open",
-      "a": "project_panel::NewFile",
-      "r": "project_panel::Rename",
-      "d": "project_panel::Trash",
-      "c": "project_panel::Copy",
-      "v": "project_panel::Paste",
-      "x": "project_panel::Cut",
-      "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
       "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
-      "ctrl-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
-      "ctrl-u": ["workspace::SendKeystrokes", "k k k k k k k k "] // Scroll up 8 times
-    }
+    },
   },
   {
     "context": "Terminal",
@@ -79,13 +118,7 @@
       "ctrl-n": "workspace::NewTerminal",
       "ctrl-f": "workspace::ToggleZoom",
       "cmd-n": "workspace::NewTerminal",
-      "cmd-f": "workspace::ToggleZoom"
-    }
+      "cmd-f": "workspace::ToggleZoom",
+    },
   },
-  {
-    "context": "PromptLibrary",
-    "bindings": {
-      "ctrl-w": "workspace::CloseWindow"
-    }
-  }
 ]
