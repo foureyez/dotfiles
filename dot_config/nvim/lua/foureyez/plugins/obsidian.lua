@@ -3,6 +3,15 @@ return {
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
 	ft = "markdown",
+	keys = {
+		{ "<leader>oc", "<cmd>ObsidianToggleCheckbox<CR>", desc = "Obsidian toggle checkbox" },
+		{ "<leader>on", "<cmd>ObsidianNew<CR>", desc = "Obsidian new note" },
+		{ "<leader>os", "<cmd>ObsidianSearch<CR>", desc = "Obsidian search" },
+		{ "<leader>od", "<cmd>ObsidianToday<CR>", desc = "Obsidian today" },
+		{ "<leader>ot", "<cmd>ObsidianTomorrow<CR>", desc = "Obsidian tomorrow" },
+		{ "<leader>ow", "<cmd>ObsidianWorkspace<CR>", desc = "Obsidian workspace" },
+		{ "<leader>oy", "<cmd>ObsidianYesterday<CR>", desc = "Obsidian yesterday" },
+	},
 	-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
 	-- event = {
 	--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
@@ -16,7 +25,6 @@ return {
 
 		-- see below for full list of optional dependencies 👇
 	},
-	opts = {},
 	config = function()
 		require("obsidian").setup({
 			workspaces = {

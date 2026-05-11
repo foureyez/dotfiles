@@ -1,27 +1,90 @@
-return {
-	{
-		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
-		priority = 1000,
-		opts = {
-			multilines = {
-				enabled = true,
+-- Server configs: keys are server names, values are server-specific settings.
+-- Servers with no custom settings only need to be listed in the `servers` table
+-- with an empty table `{}`. To add a new server, just add a line here.
+local servers = {
+	rust_analyzer = {
+		settings = {
+			["rust-analyzer"] = {
+				check = { command = "clippy" },
+				cargo = {
+					extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+					extraArgs = { "--profile", "rust-analyzer" },
+				},
 			},
 		},
 	},
+	gopls = {
+		settings = {
+			gopls = {
+				gofumpt = true,
+				codelenses = {
+					test = true,
+					tidy = true,
+				},
+				hints = {
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					functionTypeParameters = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
+				analyses = {
+					nilness = true,
+					shadow = true,
+					unusedparams = true,
+					unusedwrite = true,
+					useany = true,
+					fillstruct = true,
+				},
+				usePlaceholders = true,
+				completeUnimported = true,
+				staticcheck = true,
+				directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+				semanticTokens = true,
+			},
+		},
+		init_options = { usePlaceholders = true },
+	},
+	lua_ls = {
+		settings = {
+			Lua = {
+				diagnostics = { globals = { "vim" } },
+				workspace = {
+					library = {
+						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+						[vim.fn.stdpath("config") .. "/lua"] = true,
+					},
+				},
+			},
+		},
+	},
+	helm_ls = {
+		settings = {
+			["helm-ls"] = {
+				yamlls = { path = "yaml-language-server" },
+			},
+		},
+	},
+	bashls = {},
+	ols = {},
+	glsl_analyzer = {},
+	terraformls = {},
+	svelte = {},
+	tailwindcss = {},
+	clangd = {},
+	protols = {},
+}
+
+return {
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			-- "hrsh7th/cmp-nvim-lsp",
-		},
 		opts = {
 			diagnostics = {
-				-- underline = true,
-				-- update_in_insert = false,
-				virtual_text = false, -- False so that inline diagostics plugin will create its own virtual text(avoids conflict)
+				virtual_text = false, -- False so that inline diagnostics plugin will create its own virtual text
 			},
-			-- Global capabilities
 			capabilities = {
 				workspace = {
 					fileOperations = {
@@ -40,222 +103,38 @@ return {
 				opts.capabilities or {}
 			)
 
-			-- Apply diagnostics config from opts
 			vim.diagnostic.config(opts.diagnostics)
 
-			local keymap_opts = { noremap = true, silent = true }
-			local on_attach = function(client, bufnr)
-				keymap_opts.buffer = bufnr
-				keymap_opts.desc = "Show LSP references"
-				vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", keymap_opts)
+			local on_attach = function(_, bufnr)
+				local function map(mode, lhs, rhs, desc)
+					vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, buffer = bufnr, desc = desc })
+				end
 
-				keymap_opts.desc = "Go to declaration"
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
-
-				keymap_opts.desc = "Show LSP definitions"
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
-
-				keymap_opts.desc = "Show LSP implementations"
-				vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", keymap_opts)
-
-				keymap_opts.desc = "Show LSP type definitions"
-				vim.keymap.set("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", keymap_opts)
-
-				keymap_opts.desc = "See available code actions"
-				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, keymap_opts)
-
-				keymap_opts.desc = "Smart rename"
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
-
-				keymap_opts.desc = "Show buffer diagnostics"
-				vim.keymap.set("n", "<leader>dd", "<cmd>FzfLua diagnostics_document<CR>", keymap_opts)
-
-				keymap_opts.desc = "Show line diagnostics"
-				vim.keymap.set("n", "<leader>dK", vim.diagnostic.open_float, keymap_opts)
-
-				keymap_opts.desc = "Go to previous diagnostic"
-				vim.keymap.set("n", "<leader>dk", function()
-					vim.diagnostic.jump({ count = -1 })
-				end, keymap_opts)
-
-				keymap_opts.desc = "Go to next diagnostic"
-				vim.keymap.set("n", "<leader>dj", function()
-					vim.diagnostic.jump({ count = 1 })
-				end, keymap_opts)
-
-				keymap_opts.desc = "Show documentation for what is under cursor"
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
-
-				keymap_opts.desc = "Restart LSP"
-				vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", keymap_opts)
-
-				-- gopls specific
-				-- if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
-				-- 	local semantic = client.config.capabilities.textDocument.semanticTokens
-				-- 	client.server_capabilities.semanticTokensProvider = {
-				-- 		full = true,
-				-- 		legend = {
-				-- 			tokenTypes = semantic.tokenTypes,
-				-- 			tokenModifiers = semantic.tokenModifiers,
-				-- 		},
-				-- 		range = true,
-				-- 	}
-				-- end
+				map("n", "gr", "<cmd>FzfLua lsp_references<CR>", "Show LSP references")
+				map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+				map("n", "gd", vim.lsp.buf.definition, "Show LSP definitions")
+				map("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", "Show LSP implementations")
+				map("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", "Show LSP type definitions")
+				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "See available code actions")
+				map("n", "<leader>rn", vim.lsp.buf.rename, "Smart rename")
+				map("n", "<leader>dd", "<cmd>FzfLua diagnostics_document<CR>", "Show buffer diagnostics")
+				map("n", "<leader>dK", vim.diagnostic.open_float, "Show line diagnostics")
+				map("n", "<leader>dk", function() vim.diagnostic.jump({ count = -1 }) end, "Go to previous diagnostic")
+				map("n", "<leader>dj", function() vim.diagnostic.jump({ count = 1 }) end, "Go to next diagnostic")
+				map("n", "K", vim.lsp.buf.hover, "Show documentation for what is under cursor")
+				map("n", "<leader>rs", ":LspRestart<CR>", "Restart LSP")
 			end
 
-			-- Configure LSP for rust
-			vim.lsp.config("rust_analyzer", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					["rust-analyzer"] = {
-						check = {
-							command = "clippy",
-						},
-						cargo = {
-							extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
-							extraArgs = { "--profile", "rust-analyzer" },
-						},
-					},
-				},
-			})
+			-- Configure and enable all servers from the table
+			for name, server_opts in pairs(servers) do
+				vim.lsp.config(name, vim.tbl_deep_extend("force", {
+					on_attach = on_attach,
+					capabilities = capabilities,
+				}, server_opts))
+			end
+			vim.lsp.enable(vim.tbl_keys(servers))
 
-			-- Configure LSP for golang
-			vim.lsp.config("gopls", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					gopls = {
-						gofumpt = true,
-						codelenses = {
-							-- gc_details = false,
-							-- generate = true,
-							-- regenerate_cgo = true,
-							-- run_govulncheck = true,
-							test = true,
-							tidy = true,
-							-- upgrade_dependency = true,
-							-- vendor = true,
-						},
-						hints = {
-							assignVariableTypes = true,
-							compositeLiteralFields = true,
-							compositeLiteralTypes = true,
-							constantValues = true,
-							functionTypeParameters = true,
-							parameterNames = true,
-							rangeVariableTypes = true,
-						},
-						analyses = {
-							-- fieldalignment = true,
-							nilness = true,
-							shadow = true,
-							unusedparams = true,
-							unusedwrite = true,
-							useany = true,
-							fillstruct = true,
-						},
-						usePlaceholders = true,
-						completeUnimported = true,
-						staticcheck = true,
-						directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-						semanticTokens = true,
-					},
-				},
-				init_options = {
-					usePlaceholders = true,
-				},
-			})
-
-			-- Configure LSP for lua
-			vim.lsp.config("lua_ls", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-						workspace = {
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.stdpath("config") .. "/lua"] = true,
-							},
-						},
-						-- personal_workspace,
-					},
-				},
-			})
-
-			vim.lsp.config("bashls", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("helm_ls", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					["helm-ls"] = {
-						yamlls = {
-							path = "yaml-language-server",
-						},
-					},
-				},
-			})
-
-			vim.lsp.config("ols", {
-				-- cmd = { "/home/foureyez/workspace/ols/ols" },
-				on_attach = on_attach,
-				capabilities = capabilities,
-				-- root_dir = { "~/personal_workspace/ols" },
-				-- root_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h"),
-			})
-
-			vim.lsp.config("glsl_analyzer", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("terraformls", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("svelte", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("tailwindcss", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("clangd", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("protols", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.enable("rust_analyzer")
-			vim.lsp.enable("gopls")
-			vim.lsp.enable("lua_ls")
-			vim.lsp.enable("bashls")
-			vim.lsp.enable("helm_ls")
-			vim.lsp.enable("ols")
-			vim.lsp.enable("glsl_analyzer")
-			vim.lsp.enable("terraformls")
-			vim.lsp.enable("svelte")
-			vim.lsp.enable("tailwindcss")
-			vim.lsp.enable("clangd")
-			vim.lsp.enable("protols")
-
-			-- Autocmd for tracking and displaying lsp progress as notification
+			-- LSP progress notifications
 			local progress = vim.defaulttable()
 			vim.api.nvim_create_autocmd("LspProgress", {
 				callback = function(ev)
@@ -291,14 +170,14 @@ return {
 						id = "lsp_progress",
 						title = client.name,
 						opts = function(notif)
-							notif.icon = #progress[client.id] == 0 and " "
+							notif.icon = #progress[client.id] == 0 and " "
 								or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
 						end,
 					})
 				end,
 			})
 
-			-- Autocmd for resolving go imports on file save
+			-- Go: organize imports + format on save
 			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 				pattern = "*.go",
 				callback = function()
@@ -309,11 +188,6 @@ return {
 					local client = clients[1]
 					local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
 					params.context = { only = { "source.organizeImports" } }
-					-- buf_request_sync defaults to a 1000ms timeout. Depending on your
-					-- machine and codebase, you may want longer. Add an additional
-					-- argument after params if you find that you have to write the file
-					-- twice for changes to be saved.
-					-- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
 					local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
 					for cid, res in pairs(result or {}) do
 						for _, r in pairs(res.result or {}) do

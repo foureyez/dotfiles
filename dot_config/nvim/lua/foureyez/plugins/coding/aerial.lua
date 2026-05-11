@@ -1,5 +1,20 @@
 return {
 	"stevearc/aerial.nvim",
+	event = "LspAttach",
+	keys = {
+		{
+			"<leader>a",
+			function()
+				require("aerial").snacks_picker({
+					layout = {
+						preset = "dropdown",
+						preview = false,
+					},
+				})
+			end,
+			desc = "Aerial symbol picker",
+		},
+	},
 	opts = {},
 	-- Optional dependencies
 	dependencies = {

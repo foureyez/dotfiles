@@ -1,13 +1,14 @@
 return {
-	{
-		"saghen/blink.cmp",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-		},
-		-- use a release tag to download pre-built binaries
-		version = "1.*",
-		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-		-- build = 'cargo build --release',
+  {
+    "saghen/blink.cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+    -- use a release tag to download pre-built binaries
+    version = "1.*",
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
 
 		opts = {
 			keymap = { preset = "super-tab" },
@@ -55,6 +56,7 @@ return {
 	},
 	{
 		"saghen/blink.pairs",
+		event = "InsertEnter",
 		version = "*", -- (recommended) only required with prebuilt binaries
 
 		-- download prebuilt binaries from github releases

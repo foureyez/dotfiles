@@ -1,5 +1,5 @@
 return {
 	"NvChad/nvim-colorizer.lua",
-	event = { "BufReadPre", "BufNewFile" },
+	ft = { "css", "html", "svelte", "lua", "conf", "yaml", "toml" },
 	config = true,
 }

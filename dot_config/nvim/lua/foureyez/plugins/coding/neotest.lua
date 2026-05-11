@@ -1,22 +1,21 @@
 return {
   {
     "nvim-neotest/neotest",
+    keys = {
+      { "<leader>tt", function() require("neotest").run.run() end, desc = "Neotest: run nearest" },
+      { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Neotest: run file" },
+      { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Neotest: toggle summary" },
+      { "<leader>to", function() require("neotest").output_panel.toggle() end, desc = "Neotest: toggle output panel" },
+    },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       {
-        "nvim-treesitter/nvim-treesitter", -- Optional, but recommended
-        branch = "main",                   -- NOTE; not the master branch!
-        build = function()
-          vim.cmd(":TSUpdate go")
-        end,
-      },
-      {
         "fredrikaverpil/neotest-golang",
-        version = "*",                                                            -- Optional, but recommended; track releases
+        version = "*",  -- Optional, but recommended; track releases
         build = function()
-          vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+          vim.system({"go", "install", "gotest.tools/gotestsum@latest"}):wait() -- Optional, but recommended
         end,
       },
     },

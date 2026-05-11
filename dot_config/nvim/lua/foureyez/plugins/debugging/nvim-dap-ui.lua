@@ -1,7 +1,9 @@
 return {
 	"rcarriga/nvim-dap-ui",
 	lazy = true,
-	cmd = "DapContinue",
+	keys = {
+		{ "<leader>?", function() require("dapui").eval(nil, { enter = true }) end, desc = "DAP eval under cursor" },
+	},
 	dependencies = {
 		"nvim-neotest/nvim-nio",
 	},

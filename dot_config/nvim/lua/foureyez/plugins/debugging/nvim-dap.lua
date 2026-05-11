@@ -1,7 +1,13 @@
 return {
 	"mfussenegger/nvim-dap",
 	lazy = true,
-	cmd = "DapContinue",
+	keys = {
+		{ "<F2>", function() require("dap").step_into() end, desc = "DAP step into" },
+		{ "<F3>", function() require("dap").step_over() end, desc = "DAP step over" },
+		{ "<F4>", function() require("dap").step_out() end, desc = "DAP step out" },
+		{ "<F5>", function() require("dap").continue() end, desc = "DAP continue" },
+		{ "<leader>dr", function() require("dap").run_to_cursor() end, desc = "DAP run to cursor" },
+	},
 	dependencies = {
 		-- { "igorlfs/nvim-dap-view", opts = {} },
 	},
