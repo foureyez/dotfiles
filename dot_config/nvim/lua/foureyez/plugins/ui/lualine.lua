@@ -4,6 +4,9 @@ return {
 	event = "VeryLazy",
 	config = function()
 		local lazy_status = require("lazy.status")
+		local function current_project()
+			return "󰉋 " .. vim.fs.basename(vim.fn.getcwd())
+		end
 
 		require("lualine").setup({
 			options = {
@@ -15,6 +18,7 @@ return {
 			},
 			sections = {
 				lualine_c = {
+					{ current_project },
 					{
 						"filename",
 						path = 1,
