@@ -3,25 +3,24 @@ vim.g.maplocalleader = ","
 
 local opt = vim.opt
 
--- recommended session options from auto-session
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions,globals"
+vim.o.sessionoptions = "buffers,curdir,localoptions,globals"
 
 -- Prevent LSP from overwriting treesitter color settings (semantic tokens)
 vim.hl.priorities.semantic_tokens = 95
 
 -- line numbers
 opt.relativenumber = false -- show relative line numbers
-opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+opt.number = true          -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
+opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2    -- 2 spaces for indent width
+opt.expandtab = true  -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+opt.smartcase = true  -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
@@ -47,7 +46,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.swapfile = false
 
 opt.scrolloff = 999 -- Cursor stays at the center
-opt.cmdheight = 0 --Hide commnadline
+opt.cmdheight = 0   --Hide commnadline
 
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -57,5 +56,5 @@ opt.foldcolumn = "0"
 opt.wrap = true
 
 vim.diagnostic.config({
-	virtual_text = true,
+  virtual_text = true,
 })

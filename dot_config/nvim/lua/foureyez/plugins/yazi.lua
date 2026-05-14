@@ -1,42 +1,36 @@
 return {
-	"mikavilpas/yazi.nvim",
-	event = "VeryLazy",
-	dependencies = {
-		-- check the installation instructions at
-		-- https://github.com/folke/snacks.nvim
-		"folke/snacks.nvim",
-	},
-	keys = {
-		{
-			"<leader>e",
-			mode = { "n", "v" },
-			"<cmd>Yazi<cr>",
-			desc = "Open yazi at the current file",
-		},
-		{
-			-- Open in the current working directory
-			"<leader>E",
-			"<cmd>Yazi cwd<cr>",
-			desc = "Open the file manager in nvim's working directory",
-		},
-		{
-			"<c-up>",
-			"<cmd>Yazi toggle<cr>",
-			desc = "Resume the last yazi session",
-		},
-	},
-	---@type YaziConfig | {}
-	opts = {
-		-- if you want to open yazi instead of netrw, see below for more info
-		open_for_directories = true,
-		keymaps = {
-			show_help = "<f1>",
-		},
-		integrations = {
-			resolve_relative_path_application = "",
-			bufdelete_implementation = "snacks-if-available",
-		},
-	},
-	-- 👇 if you use `open_for_directories=true`, this is recommended
-	-- netrw already disabled in lazy.lua
+  "mikavilpas/yazi.nvim",
+  version = "*", -- use the latest stable version
+  event = "VeryLazy",
+  dependencies = {
+    { "nvim-lua/plenary.nvim", lazy = true },
+  },
+  keys = {
+    {
+      "<leader>e",
+      mode = { "n", "v" },
+      "<cmd>Yazi<cr>",
+      desc = "Open yazi at the current file",
+    },
+    {
+      -- Open in the current working directory
+      "<leader>E",
+      "<cmd>Yazi cwd<cr>",
+      desc = "Open the file manager in nvim's working directory",
+    },
+    {
+      "<c-up>",
+      "<cmd>Yazi toggle<cr>",
+      desc = "Resume the last yazi session",
+    },
+  },
+  ---@type YaziConfig | {}
+  opts = {
+    open_for_directories = false,
+    keymaps = {
+      show_help = "<f1>",
+    },
+  },
+  -- 👇 if you use `open_for_directories=true`, this is recommended
+  -- netrw already disabled in lazy.lua
 }
