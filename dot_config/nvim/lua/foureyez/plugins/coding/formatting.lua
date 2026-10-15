@@ -19,6 +19,7 @@ return {
 				-- proto = { "protols" }, --Default formatting not inline with work files, disabling
 				rust = { "rustfmt" },
 				odin = { "odinfmt" },
+				swift = { "swift_format" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()

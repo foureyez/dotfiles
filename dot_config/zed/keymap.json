@@ -22,7 +22,6 @@
 
       // Misc
       "ctrl-g": "workspace::ToggleBottomDock",
-      "ctrl-r": "task::Spawn",
       "ctrl-w": "pane::CloseActiveItem",
       "ctrl-n": "workspace::NewFile",
 
@@ -42,7 +41,7 @@
   {
     "context": "(GitPanel && !Editor) || (GitPanel && Editor && vim_mode == normal) || (Editor && vim_mode == normal)",
     "bindings": {
-      "space l": "git_panel::Toggle",
+      "space g": "git_panel::Toggle",
     },
   },
   // Popups
@@ -89,9 +88,9 @@
       "p": "project_panel::Paste",
       "x": "project_panel::Cut",
       "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
-      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k"], // Scroll up 8 times
       "ctrl-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
-      "ctrl-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+      "ctrl-u": ["workspace::SendKeystrokes", "k k k k k k k k"], // Scroll up 8 times
     },
   },
 
@@ -103,7 +102,7 @@
       "space f": "file_finder::Toggle",
 
       "cmd-o": "pane::GoBack",
-      "g r": "editor::FindAllReferences",
+      "g r": ["editor::FindAllReferences", { "open_results_in": "picker" }],
       "g i": "editor::GoToImplementation",
       "r n": "editor::Rename",
       "space d k": "editor::GoToPreviousDiagnostic",
@@ -113,7 +112,7 @@
 
       "alt-enter": "editor::OpenExcerpts",
       "cmd-d": ["workspace::SendKeystrokes", "j j j j j j j j"], // Scroll down 8 times
-      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k "], // Scroll up 8 times
+      "cmd-u": ["workspace::SendKeystrokes", "k k k k k k k k"], // Scroll up 8 times
       "space l": ["task::Spawn", { "task_name": "lazygit" }],
     },
   },

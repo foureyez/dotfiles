@@ -267,3 +267,15 @@ run = "move-node-to-workspace 8"
 if.app-id = 'org.aseprite.Aseprite'
 run = "move-node-to-workspace 8"
 
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+if.window-title-regex-substring = '(Preferences|Settings|Instruments|Documentation|Organizer)'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ScreenContinuity' # Fixes iPhone Mirroring
+run = 'layout floating'

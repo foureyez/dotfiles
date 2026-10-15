@@ -18,6 +18,7 @@ return {
           vim.system({"go", "install", "gotest.tools/gotestsum@latest"}):wait() -- Optional, but recommended
         end,
       },
+      "wojciech-kulik/xcodebuild.nvim",
     },
     config = function()
       local config = {
@@ -26,6 +27,7 @@ return {
       require("neotest").setup({
         adapters = {
           require("neotest-golang")(config),
+          require("xcodebuild.integrations.neotest"),
         },
       })
     end,

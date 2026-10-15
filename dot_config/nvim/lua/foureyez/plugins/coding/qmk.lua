@@ -22,6 +22,6 @@ return {
 				"_ _ _ _ x x _ x x _ _ _ _",
 			},
 		}
-		require("qmk").setup(onemoreconfig)
+		require("qmk").setup(config)
 	end,
 }

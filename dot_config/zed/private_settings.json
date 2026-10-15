@@ -13,6 +13,7 @@
   },
   "vim_mode": true,
   "autosave": "on_focus_change",
+  "relative_line_numbers": true,
   "vertical_scroll_margin": 15,
   "buffer_font_family": "SF Mono Terminal",
   "tab_size": 2,
@@ -37,16 +38,23 @@
     "show": true,
     "show_nav_history_buttons": false
   },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "selections_menu": false,
+    "agent_review": false,
+    "code_actions": false
+  },
   "preview_tabs": {
     // Whether preview tabs should be enabled.
     // Preview tabs allow you to open files in preview mode, where they close automatically
     // when you switch to another file unless you explicitly pin them.
     // This is useful for quickly viewing files without cluttering your workspace.
-    "enabled": true,
+    "enabled": false,
     // Whether to open tabs in preview mode when selected from the file finder.
-    "enable_preview_from_file_finder": true,
+    "enable_preview_from_file_finder": false,
     // Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
-    "enable_keep_preview_on_code_navigation": true
+    "enable_keep_preview_on_code_navigation": false
   },
   "outline_panel": {
     "button": true,
@@ -88,5 +96,10 @@
       "values.yaml",
       "values.*.yaml"
     ]
+  },
+  "status_bar": {
+    "active_language_button": true,
+    "cursor_position_button": true,
+    "line_endings_button": false
   }
 }

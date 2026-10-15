@@ -27,6 +27,7 @@ return {
       "xml",
       "zsh",
       "terraform",
+      "swift",
     }
   end,
 }
